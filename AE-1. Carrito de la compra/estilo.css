@@ -1,0 +1,12 @@
+body{
+    font-family: monospace;
+}
+
+#unidades{
+    width: 30px;
+}
+
+span{
+    color: red;
+    font-weight: bold;
+}
