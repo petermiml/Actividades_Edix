@@ -39,7 +39,7 @@ function initVariables(){
 
 function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
-
+    btnImprimir.addEventListener("click", imprimir);
 }
 // =====================================================================================================
 
@@ -103,8 +103,21 @@ function sumarPrecioCarrito(){
 }
 
 // ------------------------------------------- Pedro --------------------------------------------
-// Cuarto punto
+// Cuando se pulse el botón "imprimir" debe mostrar a través de una ventana, tanto la lista de la compra final como el precio final del carrito según muestra la imágen.
+// Si no se ha seleccionado forma de pago, deberá aparecer un mensaje "seleccione método de pago".
 
+function imprimir(){
+    if(forma_pago.value == "seleccione"){
+        alert("Seleccione método de pago");
+    
+    }else{ 
+        alert("Los artículos del carrito son " + artEnCarrito.value + "\n" + 
+            "El precio total es: " + precio_total.value + " €" 
+         + "\n" + "Forma de pago: " + forma_pago.value);
+
+    }
+
+}
 
 
 // ------------------------------------------- Dani --------------------------------------------
@@ -125,6 +138,7 @@ window.addEventListener("load",init);
 function init(){
     initVariables();
     initEventos();
+    
 }
 
 // =====================================================================================================
