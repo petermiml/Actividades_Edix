@@ -131,14 +131,15 @@ function imprimir(){
 // ------------------------------------------- Dani --------------------------------------------
 // Quinto punto
 function restab(){
-
     nombre_art.value = '';
     precio_art.value = '';
     precio_total.value = '';
     artEnCarrito.value = '';
-    unidades.value = 1;    
+    unidades.value = 1;
+    aviso1.innerHTML = "";
+    aviso2.innerHTML = "";
+    aviso3.innerHTML = "";    
     nombre_art.focus();  
-
 }
 
 
