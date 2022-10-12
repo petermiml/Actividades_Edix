@@ -65,7 +65,6 @@ function sumarPrecioCarrito(){
         descuento).
         Si ninguna de las condiciones anteriores se cumple, quitará el aviso.*/
 
-    parseFloat(precio_art.value);
     if(precio_art.value == ''){
         aviso2.innerHTML = " &nbsp&nbspFalta precio.";
     }else if(precio_art.value.match(valoresAceptados)){
