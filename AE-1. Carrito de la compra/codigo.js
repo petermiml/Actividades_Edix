@@ -11,7 +11,7 @@ var forma_pago;
 var acepto_condiciones;
 var btnImprimir;
 var btnReset;
-
+var valoresAceptados = /^[0-9]*(\.?)[0-9]+$/;
 
 // =====================================================================================================
 
@@ -50,8 +50,7 @@ function initEventos(){
 
 function sumarPrecioCarrito(){
     var pre_tot = parseFloat(precio_total.value);
-    
-    
+    var precioNumerico = false;
 
     // Si el nombre del artículo está vacío escribe en la pantalla que falta el artículo, si no, deja vacío el aviso.
     if(nombre_art.value == ''){
@@ -60,16 +59,22 @@ function sumarPrecioCarrito(){
         aviso1.innerHTML = "";
     }
 
-    // Si el precio del artículo está vacío escribe en la pantalla que falta el artículo, si no, lo deja vacío.
-    // Si el valor introducido no es un número, que el dato debe ser numérico.
-    // Si ninguna de las condiciones anteriores se cumple, quitará el aviso.
+    /* Si el precio del artículo está vacío escribe en la pantalla que falta el artículo, si no, lo deja vacío.
+        Si el valor introducido no es un número, avisa de que el dato debe ser numérico.
+        Si el precio es inferior a 0, avisará de que no puede ser inferior a 0 (igual a 0 si, debido a un posible
+        descuento).
+        Si ninguna de las condiciones anteriores se cumple, quitará el aviso.*/
+
     parseFloat(precio_art.value);
     if(precio_art.value == ''){
         aviso2.innerHTML = " &nbsp&nbspFalta precio.";
-    }else if(typeof(precio_art.value == 'string')){
-        aviso2.innerHTML = " &nbsp&nbspEl precio debe ser numérico.";
-    }else{
+    }else if(precio_art.value.match(valoresAceptados)){
         aviso2.innerHTML = "";
+        precioNumerico = true;
+    }else if(precio_art.value < 0){
+        aviso2.innerHTML = "El precio no puede ser inferior a 0. Introduce un precio válido.";
+    }else{
+        aviso2.innerHTML = "&nbsp&nbspEl precio debe ser numérico.";  
     }
 
     // Si las unidades son inferiores o iguales a 0, escribe en la pantalla que el número de unidades no puede ser 0 o negativo.
@@ -79,14 +84,18 @@ function sumarPrecioCarrito(){
         aviso3.innerHTML = "";
     }
 
+    /*  Si el nombre del articulo no está vacío, el precio es numérico y las unidades son superiores o iguales a 1:
+        multiplicara el precio del articulo por el de unidades y se lo sumará al precio total. Posteriormente, 
+        mostrará el precio total redondeado a dos decimales. Además introducirá en el campo del carrito los artículos
+        añadidos separados por comas si son mas de uno.*/
 
-    if(nombre_art.value != '' && precio_art.value != '' /*& typeof(precio_art.value) != 'string'*/ & parseInt(unidades.value) >= 1){
+    if(nombre_art.value != '' && precioNumerico == true & parseInt(unidades.value) >= 1){
         aviso1.innerHTML = '';
         aviso2.innerHTML = '';
         aviso3.innerHTML = '';
 
         pre_tot += parseFloat(precio_art.value)*parseInt(unidades.value);
-        precio_total.value = pre_tot;
+        precio_total.value = pre_tot.toFixed(2);
 
         if(artEnCarrito.value == ''){
             artEnCarrito.value += nombre_art.value;
@@ -97,7 +106,6 @@ function sumarPrecioCarrito(){
         nombre_art.value = '';
         precio_art.value = '';
         unidades.value = 1;    
-        nombre_art.style.focus = true;
         nombre_art.focus();
     }
 }
