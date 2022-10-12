@@ -30,7 +30,7 @@ function initVariables(){
     forma_pago = document.getElementById("forma_pago");
     acepto_condiciones = document.getElementById("acepto_condiciones");
     btnImprimir = document.getElementById("btnImprimir");
-    btnReset = document.getElementById("btnReset");
+    btnReset = document.getElementById("btnReset");    
 }
 
 // ====================================================================================================
@@ -40,6 +40,7 @@ function initVariables(){
 function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
     btnImprimir.addEventListener("click", imprimir);
+    btnReset.addEventListener("click", restab);
 }
 // =====================================================================================================
 
@@ -129,7 +130,16 @@ function imprimir(){
 
 // ------------------------------------------- Dani --------------------------------------------
 // Quinto punto
+function restab(){
 
+    nombre_art.value = '';
+    precio_art.value = '';
+    precio_total.value = '';
+    artEnCarrito.value = '';
+    unidades.value = 1;    
+    nombre_art.focus();  
+
+}
 
 
 // ------------------------------------------- Ahmed --------------------------------------------
