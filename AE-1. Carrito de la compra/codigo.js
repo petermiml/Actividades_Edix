@@ -31,6 +31,7 @@ function initVariables(){
     acepto_condiciones = document.getElementById("acepto_condiciones");
     btnImprimir = document.getElementById("btnImprimir");
     btnReset = document.getElementById("btnReset");
+    nombre_art.focus();
 }
 
 // ====================================================================================================
@@ -39,6 +40,8 @@ function initVariables(){
 
 function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
+    btnReset.addEventListener('click', restab);
+
 
 }
 // =====================================================================================================
@@ -99,6 +102,7 @@ function sumarPrecioCarrito(){
         unidades.value = 1;    
         nombre_art.style.focus = true;
         nombre_art.focus();
+       
     }
 }
 
@@ -110,7 +114,16 @@ function sumarPrecioCarrito(){
 // ------------------------------------------- Dani --------------------------------------------
 // Quinto punto
 
+function restab(){
 
+    nombre_art.value = '';
+    precio_art.value = '';
+    unidades.value = 1;    
+    nombre_art.style.focus = true;
+    nombre_art.focus();
+    artEnCarrito.value ='';
+    precio_total.value = '';
+}
 
 // ------------------------------------------- Ahmed --------------------------------------------
 // Segundo y tercer punto
@@ -125,6 +138,6 @@ window.addEventListener("load",init);
 function init(){
     initVariables();
     initEventos();
-}
+    }
 
 // =====================================================================================================
