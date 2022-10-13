@@ -12,10 +12,11 @@ var acepto_condiciones;
 var btnImprimir;
 var btnReset;
 var valoresAceptados = /^[0-9]*(\.?)[0-9]+$/;
-var pagoTarjeta;
-var pagoTransferencia;
-var formuDatosTransferencia;
-var formuDatosTarjeta;
+var tarjeta;
+var transferencia;
+var mostrarFormuTarjeta;
+var mostrarFormuTransferencia;
+
 // =====================================================================================================
 
 // ============================= Función inicializadora de variables ===================================
@@ -34,10 +35,10 @@ function initVariables(){
     acepto_condiciones = document.getElementById("acepto_condiciones");
     btnImprimir = document.getElementById("btnImprimir");
     btnReset = document.getElementById("btnReset");    
-    pagoTarjeta = document.getElementById("tarjeta");
-    pagoTransferencia = document.getElementById("transferencia"); 
-    formuDatosTarjeta = document.getElementById("formuDatosTarjeta");
-    formuDatosTransferencia = document.getElementById("formuDatosTransferencia"); 
+    tarjeta = document.getElementById("tarjeta");
+    transferencia = document.getElementById("transferencia"); 
+    mostrarFormuTarjeta = document.getElementById("formuDatosTarjeta");
+    mostrarFormuTransferencia = document.getElementById("formuDatosTransferencia"); 
 
 }
 
@@ -49,18 +50,26 @@ function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
     btnImprimir.addEventListener("click", imprimir);
     btnReset.addEventListener("click", restab);
-    pagoTarjeta.addEventListener("click", datosTarjeta);
-    pagoTransferencia.addEventListener("click", datosTransferencia);
+    tarjeta.addEventListener("click", escribirDatosTarjeta);
+    transferencia.addEventListener("click", escribirDatosTransferencia);
+    mostrarFormuTarjeta.addEventListener("onload",datosTarjeta);
 }
 // =====================================================================================================
 
 // ========================================= Resto de funciones ========================================
 
 function datosTarjeta(){
-    document.write(<h2>lolol</h2>);
+    
+     mostrarFormuTarjeta.style.display = 'none';
 }
 function datosTransferencia(){
-
+    mostrarFormuTransferencia.style.display ='none';
+}
+function escribirDatosTarjeta(){
+    mostrarFormuTarjeta.style.display = 'block';
+}
+function escribirDatosTransferencia(){
+    mostrarFormuTransferencia.style.display ='block';
 }
 // ------------------------------------------- Pedro Gómez --------------------------------------------
 // Primer punto
@@ -172,7 +181,8 @@ window.addEventListener("load",init);
 function init(){
     initVariables();
     initEventos();
-    
+    //datosTarjeta();
+    //datosTransferencia();
 }
 
 // =====================================================================================================
