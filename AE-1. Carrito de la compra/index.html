@@ -52,12 +52,37 @@
         <label for="forma_pago">Forma de pago: </label>
         <select name="forma_pago" id="forma_pago">
             <option value="seleccione">---seleccione---</option> <!--Modificado los métodos de pago (PedroJ)-->
-            <option value="tarjeta">Tarjeta</option>
-            <option value="transferencia">Transferencia</option>
+            <option id="tarjeta" value="tarjeta">Tarjeta</option>
+            <option id="efectivo" value="efectivo">Efectivo</option>
             
         </select>
 
-        <br><br><br><br><br>
+        <!--<div id ="formuDatosTarjeta" style="display:none">-->
+            <table id ="formuDatosTarjeta" >
+                <br/><br/><br/><br/>
+            <tr>
+                <td><label for="nombre">Titular tarjeta: </label></td>
+                <td><input type="text" name="nombre" id="nombre"></td>
+            </tr>
+            <tr>
+                <td><label for="numeroTarjeta">Número tarjeta: </label></td>
+                <td><input type="number" name="numeroTarjeta" id="numeroTarjeta"></td>
+            </tr>
+
+            <tr>
+                <td><label for="cvv">CVV: </label></td>
+                <td><input type="text" name="cvv" id="cvv"></td>
+            </tr>
+        </table>
+        <br/>
+
+            <table id ="formuDatosEfectivo" >
+                <tr>
+                    <td><label for="importeEfectivo">Importe efectivo: </label></td>
+                    <td><input type="text" name="n" id="importeEfectivo"></td>
+                </tr>
+            </table>
+        <br/><br/><br/>    
 
         <input type="checkbox" name="acepto_condiciones" id="acepto_condiciones">Acepto las condiciones de compra
         <br><br><br>

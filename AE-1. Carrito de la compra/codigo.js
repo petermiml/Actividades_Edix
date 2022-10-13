@@ -12,6 +12,11 @@ var acepto_condiciones;
 var btnImprimir;
 var btnReset;
 var valoresAceptados = /^[0-9]*(\.?)[0-9]+$/;
+var FormaDePago;
+var tarjeta;
+var efectivo;
+var mostrarFormuTarjeta;
+var mostrarFormuEfectivo;
 
 // =====================================================================================================
 
@@ -30,7 +35,14 @@ function initVariables(){
     forma_pago = document.getElementById("forma_pago");
     acepto_condiciones = document.getElementById("acepto_condiciones");
     btnImprimir = document.getElementById("btnImprimir");
-    btnReset = document.getElementById("btnReset");    
+    btnReset = document.getElementById("btnReset");
+    FormaDePago = document.getElementById("forma_pago");   
+    tarjeta = document.getElementById("tarjeta");
+    efectivo = document.getElementById("efectivo"); 
+    mostrarFormuTarjeta = document.getElementById("formuDatosTarjeta");
+    mostrarFormuEfectivo = document.getElementById("formuDatosEfectivo"); 
+    
+
 }
 
 // ====================================================================================================
@@ -41,11 +53,31 @@ function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
     btnImprimir.addEventListener("click", imprimir);
     btnReset.addEventListener("click", restab);
+    FormaDePago.addEventListener("click",escribirFormulario);
 }
 // =====================================================================================================
 
 // ========================================= Resto de funciones ========================================
 
+function ocultarDrdatosTarjeta(){
+    mostrarFormuTarjeta.style.display = 'none';
+}
+function ocultarDatosEfectivo(){
+    mostrarFormuEfectivo.style.display ='none';
+}
+function escribirFormulario(){
+    if(FormaDePago.value =="tarjeta"){
+        mostrarFormuTarjeta.style.display ='block';
+        mostrarFormuEfectivo.style.display ='none';
+    }
+    else if(FormaDePago.value =="efectivo"){
+        mostrarFormuEfectivo.style.display ='block';
+        mostrarFormuTarjeta.style.display = 'none';
+    }else{
+        mostrarFormuEfectivo.style.display ='none';
+        mostrarFormuTarjeta.style.display = 'none';
+    }
+}
 // ------------------------------------------- Pedro Gómez --------------------------------------------
 // Primer punto
 
@@ -156,7 +188,8 @@ window.addEventListener("load",init);
 function init(){
     initVariables();
     initEventos();
-    
+    ocultarDrdatosTarjeta();
+    ocultarDatosEfectivo();
 }
 
 // =====================================================================================================
