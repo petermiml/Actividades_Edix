@@ -12,9 +12,6 @@ var acepto_condiciones;
 var btnImprimir;
 var btnReset;
 var valoresAceptados = /^[0-9]*(\.?)[0-9]+$/;
-var FormaDePago;
-var tarjeta;
-var efectivo;
 var mostrarFormuTarjeta;
 var mostrarFormuEfectivo;
 
@@ -36,9 +33,6 @@ function initVariables(){
     acepto_condiciones = document.getElementById("acepto_condiciones");
     btnImprimir = document.getElementById("btnImprimir");
     btnReset = document.getElementById("btnReset");
-    FormaDePago = document.getElementById("forma_pago");   
-    tarjeta = document.getElementById("tarjeta");
-    efectivo = document.getElementById("efectivo"); 
     mostrarFormuTarjeta = document.getElementById("formuDatosTarjeta");
     mostrarFormuEfectivo = document.getElementById("formuDatosEfectivo"); 
     
@@ -53,7 +47,7 @@ function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
     btnImprimir.addEventListener("click", imprimir);
     btnReset.addEventListener("click", restab);
-    FormaDePago.addEventListener("click",escribirFormulario);
+    forma_pago.addEventListener("click",escribirFormulario);
 }
 // =====================================================================================================
 
@@ -66,11 +60,11 @@ function ocultarDatosEfectivo(){
     mostrarFormuEfectivo.style.display ='none';
 }
 function escribirFormulario(){
-    if(FormaDePago.value =="tarjeta"){
+    if(forma_pago.value =="tarjeta"){
         mostrarFormuTarjeta.style.display ='block';
         mostrarFormuEfectivo.style.display ='none';
     }
-    else if(FormaDePago.value =="efectivo"){
+    else if(forma_pago.value =="efectivo"){
         mostrarFormuEfectivo.style.display ='block';
         mostrarFormuTarjeta.style.display = 'none';
     }else{
