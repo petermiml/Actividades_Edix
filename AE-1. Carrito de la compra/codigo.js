@@ -12,10 +12,11 @@ var acepto_condiciones;
 var btnImprimir;
 var btnReset;
 var valoresAceptados = /^[0-9]*(\.?)[0-9]+$/;
+var FormaDePago;
 var tarjeta;
-var transferencia;
+var efectivo;
 var mostrarFormuTarjeta;
-var mostrarFormuTransferencia;
+var mostrarFormuEfectivo;
 
 // =====================================================================================================
 
@@ -34,11 +35,13 @@ function initVariables(){
     forma_pago = document.getElementById("forma_pago");
     acepto_condiciones = document.getElementById("acepto_condiciones");
     btnImprimir = document.getElementById("btnImprimir");
-    btnReset = document.getElementById("btnReset");    
+    btnReset = document.getElementById("btnReset");
+    FormaDePago = document.getElementById("forma_pago");   
     tarjeta = document.getElementById("tarjeta");
-    transferencia = document.getElementById("transferencia"); 
+    efectivo = document.getElementById("efectivo"); 
     mostrarFormuTarjeta = document.getElementById("formuDatosTarjeta");
-    mostrarFormuTransferencia = document.getElementById("formuDatosTransferencia"); 
+    mostrarFormuEfectivo = document.getElementById("formuDatosEfectivo"); 
+    
 
 }
 
@@ -50,26 +53,30 @@ function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
     btnImprimir.addEventListener("click", imprimir);
     btnReset.addEventListener("click", restab);
-    tarjeta.addEventListener("click", escribirDatosTarjeta);
-    transferencia.addEventListener("click", escribirDatosTransferencia);
-    mostrarFormuTarjeta.addEventListener("onload",datosTarjeta);
+    FormaDePago.addEventListener("click",escribirFormulario);
 }
 // =====================================================================================================
 
 // ========================================= Resto de funciones ========================================
 
-function datosTarjeta(){
-    
-     mostrarFormuTarjeta.style.display = 'none';
+function ocultarDrdatosTarjeta(){
+    mostrarFormuTarjeta.style.display = 'none';
 }
-function datosTransferencia(){
-    mostrarFormuTransferencia.style.display ='none';
+function ocultarDatosEfectivo(){
+    mostrarFormuEfectivo.style.display ='none';
 }
-function escribirDatosTarjeta(){
-    mostrarFormuTarjeta.style.display = 'block';
-}
-function escribirDatosTransferencia(){
-    mostrarFormuTransferencia.style.display ='block';
+function escribirFormulario(){
+    if(FormaDePago.value =="tarjeta"){
+        mostrarFormuTarjeta.style.display ='block';
+        mostrarFormuEfectivo.style.display ='none';
+    }
+    else if(FormaDePago.value =="efectivo"){
+        mostrarFormuEfectivo.style.display ='block';
+        mostrarFormuTarjeta.style.display = 'none';
+    }else{
+        mostrarFormuEfectivo.style.display ='none';
+        mostrarFormuTarjeta.style.display = 'none';
+    }
 }
 // ------------------------------------------- Pedro Gómez --------------------------------------------
 // Primer punto
@@ -181,8 +188,8 @@ window.addEventListener("load",init);
 function init(){
     initVariables();
     initEventos();
-    //datosTarjeta();
-    //datosTransferencia();
+    ocultarDrdatosTarjeta();
+    ocultarDatosEfectivo();
 }
 
 // =====================================================================================================
