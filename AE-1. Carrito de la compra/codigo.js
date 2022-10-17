@@ -14,7 +14,7 @@ var btnReset;
 var valoresAceptados = /^[0-9]*(\.?)[0-9]+$/;
 var mostrarFormuTarjeta;
 var mostrarFormuEfectivo;
-
+var importeEfectivo;
 // =====================================================================================================
 
 // ============================= Función inicializadora de variables ===================================
@@ -35,7 +35,7 @@ function initVariables(){
     btnReset = document.getElementById("btnReset");
     mostrarFormuTarjeta = document.getElementById("formuDatosTarjeta");
     mostrarFormuEfectivo = document.getElementById("formuDatosEfectivo"); 
-    
+    importeEfectivo = document.getElementById("importeEfectivo");
 
 }
 
@@ -67,10 +67,14 @@ function escribirFormulario(){
     else if(forma_pago.value =="efectivo"){
         mostrarFormuEfectivo.style.display ='block';
         mostrarFormuTarjeta.style.display = 'none';
+        mostrarImporteEfectivo();
     }else{
         mostrarFormuEfectivo.style.display ='none';
         mostrarFormuTarjeta.style.display = 'none';
     }
+}
+function mostrarImporteEfectivo(){
+    importeEfectivo.value = precio_total.value;
 }
 // ------------------------------------------- Pedro Gómez --------------------------------------------
 // Primer punto
