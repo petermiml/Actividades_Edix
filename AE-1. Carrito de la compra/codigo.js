@@ -12,6 +12,8 @@ var acepto_condiciones;
 var btnImprimir;
 var btnReset;
 var valoresAceptados = /^[0-9]*(\.?)[0-9]+$/;
+var mostrarFormuTarjeta;
+var mostrarFormuEfectivo;
 
 // =====================================================================================================
 
@@ -30,7 +32,11 @@ function initVariables(){
     forma_pago = document.getElementById("forma_pago");
     acepto_condiciones = document.getElementById("acepto_condiciones");
     btnImprimir = document.getElementById("btnImprimir");
-    btnReset = document.getElementById("btnReset");    
+    btnReset = document.getElementById("btnReset");
+    mostrarFormuTarjeta = document.getElementById("formuDatosTarjeta");
+    mostrarFormuEfectivo = document.getElementById("formuDatosEfectivo"); 
+    
+
 }
 
 // ====================================================================================================
@@ -41,11 +47,31 @@ function initEventos(){
     btnAddCarrito.addEventListener("click", sumarPrecioCarrito);
     btnImprimir.addEventListener("click", imprimir);
     btnReset.addEventListener("click", restab);
+    forma_pago.addEventListener("click",escribirFormulario);
 }
 // =====================================================================================================
 
 // ========================================= Resto de funciones ========================================
 
+function ocultarDrdatosTarjeta(){
+    mostrarFormuTarjeta.style.display = 'none';
+}
+function ocultarDatosEfectivo(){
+    mostrarFormuEfectivo.style.display ='none';
+}
+function escribirFormulario(){
+    if(forma_pago.value =="tarjeta"){
+        mostrarFormuTarjeta.style.display ='block';
+        mostrarFormuEfectivo.style.display ='none';
+    }
+    else if(forma_pago.value =="efectivo"){
+        mostrarFormuEfectivo.style.display ='block';
+        mostrarFormuTarjeta.style.display = 'none';
+    }else{
+        mostrarFormuEfectivo.style.display ='none';
+        mostrarFormuTarjeta.style.display = 'none';
+    }
+}
 // ------------------------------------------- Pedro Gómez --------------------------------------------
 // Primer punto
 
@@ -131,14 +157,15 @@ function imprimir(){
 // ------------------------------------------- Dani --------------------------------------------
 // Quinto punto
 function restab(){
-
     nombre_art.value = '';
     precio_art.value = '';
     precio_total.value = '';
     artEnCarrito.value = '';
-    unidades.value = 1;    
+    unidades.value = 1;
+    aviso1.innerHTML = "";
+    aviso2.innerHTML = "";
+    aviso3.innerHTML = "";    
     nombre_art.focus();  
-
 }
 
 
@@ -155,7 +182,8 @@ window.addEventListener("load",init);
 function init(){
     initVariables();
     initEventos();
-    
+    ocultarDrdatosTarjeta();
+    ocultarDatosEfectivo();
 }
 
 // =====================================================================================================
