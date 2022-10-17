@@ -53,7 +53,7 @@ function initEventos(){
 
 // ========================================= Resto de funciones ========================================
 
-function ocultarDrdatosTarjeta(){
+function ocultarDadatosTarjeta(){
     mostrarFormuTarjeta.style.display = 'none';
 }
 function ocultarDatosEfectivo(){
@@ -186,8 +186,9 @@ window.addEventListener("load",init);
 function init(){
     initVariables();
     initEventos();
-    ocultarDrdatosTarjeta();
+    ocultarDadatosTarjeta();
     ocultarDatosEfectivo();
+    mostrarImporteEfectivo();
 }
 
 // =====================================================================================================
