@@ -10,9 +10,6 @@ span{
     color: black;
     font-weight: bold;
 }
-/*#formuDatosTarjeta{
-    display: none;
+#cvv{
+    width: 30px;
 }
-#formuDatosTransferencia{
-    display: none;
-}*/
