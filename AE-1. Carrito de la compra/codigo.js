@@ -48,6 +48,7 @@ function initEventos(){
     btnImprimir.addEventListener("click", imprimir);
     btnReset.addEventListener("click", restab);
     forma_pago.addEventListener("click",escribirFormulario);
+    acepto_condiciones.addEventListener("change", permisoImpresion);
 }
 // =====================================================================================================
 
@@ -176,7 +177,16 @@ function restab(){
 // ------------------------------------------- Ahmed --------------------------------------------
 // Segundo y tercer punto
 
-
+function permisoImpresion(){
+    
+    if(acepto_condiciones.checked == true){
+        
+        btnImprimir.disabled = false;
+    }else{
+        
+        btnImprimir.disabled = true;
+    }
+    }
 
 // =====================================================================================================
 
