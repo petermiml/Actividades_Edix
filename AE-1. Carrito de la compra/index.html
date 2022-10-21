@@ -10,7 +10,7 @@
 </head>
 <body>
     <form>
-
+        <!--Tabla para rellenar artículos, cantidad y el botón de añadir productos.-->
         <table>
             <tr>
                 <td><label for="nombre_articulo">Nombre artículo: </label></td>
@@ -35,8 +35,9 @@
                 
             </tr>
         </table>
-
         <br><br>
+        
+        <!--Tabla para ver artículos seleccionados y suma de precio total.-->
         <table>
             <tr>
                 <td><label for="articulos_en_carrito">Artículos en carrito: </label></td>
@@ -46,17 +47,18 @@
                 <td><label for="precio_total">Precio total del carrito: </label></td>
                 <td><input type="text" name="precio_total" id="precio_total" value="0" readonly></td>
         </table>
-        
         <br><br>
 
+        <!--Selector de formas de pago. Modificado los métodos de pago (PedroJ)-->
         <label for="forma_pago">Forma de pago: </label>
         <select name="forma_pago" id="forma_pago">
-            <option value="seleccione">---seleccione---</option> <!--Modificado los métodos de pago (PedroJ)-->
+            <option value="seleccione">---seleccione---</option> 
             <option id="tarjeta" value="tarjeta">Tarjeta</option>
             <option id="efectivo" value="efectivo">Efectivo</option>
-            
         </select>
 
+            <!--Aquí creamos la dos tablas para rellenar los datos de pago que 
+            estarán ocultada por defecto. -->
             <table id ="formuDatosTarjeta" >
                 <br/><br/><br/><br/>
             <tr>
@@ -81,11 +83,13 @@
                     <td><input type="text" name="importeEfectivo" id="importeEfectivo" value="0" readonly></td>
                 </tr>
             </table>
-        <br/><br/><br/>    
+        <br/><br/><br/> 
 
+        <!--Checkbox para aceptar la condiciones.-->
         <input type="checkbox" name="acepto_condiciones" id="acepto_condiciones">Acepto las condiciones de compra
         <br><br><br>
 
+        <!--Botón de imprimir.-->
         <input type="submit" value="Imprimir" id="btnImprimir" disabled="true">&nbsp;&nbsp;&nbsp;
         <input type="reset" value="Restablecer" id="btnReset">
 
