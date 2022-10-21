@@ -200,7 +200,7 @@ function imprimir(){
         alert("Seleccione método de pago");
     
     }else{ 
-        alert("Los artículos del carrito son " + artEnCarrito.value + "\n" + 
+        alert("Los artículos del carrito son: " + artEnCarrito.value + "\n" + 
             "El precio total es: " + precio_total.value + " €" 
          + "\n" + "Forma de pago: " + forma_pago.value);
 
