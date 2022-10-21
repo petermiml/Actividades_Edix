@@ -69,7 +69,8 @@ function sumarPrecioCarrito(){
     var precioNumerico = false;
 
     /* Si el nombre del artículo está vacío escribe en la pantalla que falta 
-    el artículo, si no, deja vacío el aviso.*/
+    el artículo, si no, deja vacío el aviso.
+    */
     if(nombre_art.value == ''){
         aviso1.innerHTML = " &nbsp&nbspFalta artículo.";
     }else{
@@ -83,7 +84,8 @@ function sumarPrecioCarrito(){
     * Si el precio es inferior a 0, avisará de que no puede ser inferior a 0 
     (igual a 0 si, debido a un posible
     descuento).
-    * Si ninguna de las condiciones anteriores se cumple, quitará el aviso.*/
+    * Si ninguna de las condiciones anteriores se cumple, quitará el aviso.
+    */
 
     if(precio_art.value == ''){
         aviso2.innerHTML = " &nbsp&nbspFalta precio.";
@@ -97,7 +99,8 @@ function sumarPrecioCarrito(){
     }
 
     /* Si las unidades son inferiores o iguales a 0, escribe en la pantalla 
-    que el número de unidades no puede ser 0 o negativo.*/
+    que el número de unidades no puede ser 0 o negativo.
+    */
     if(unidades.value <= 0){
         aviso3.innerHTML = " &nbsp&nbspEl número de unidades no puede ser menor o igual a 0.";
     }else{
@@ -106,11 +109,12 @@ function sumarPrecioCarrito(){
 
     /*  Si el nombre del articulo no está vacío, el precio es numérico y las 
     unidades son superiores o iguales a 1:
-    multiplicara el precio del articulo por el de unidades y se lo sumará al 
+    -multiplicara el precio del articulo por el de unidades y se lo sumará al 
     precio total.
-    Posteriormente, mostrará el precio total redondeado a dos decimales. 
-    Además introducirá en el campo del carrito los artículos añadidos separados
-    por comas si son mas de uno.*/
+    -Posteriormente, mostrará el precio total redondeado a dos decimales. 
+    -Además introducirá en el campo del carrito los artículos añadidos separados
+    por comas si son mas de uno.
+    */
 
     if(nombre_art.value != '' && precioNumerico == true & parseInt(unidades.value) >= 1){
         aviso1.innerHTML = '';
@@ -145,8 +149,7 @@ function ocultarDatosEfectivo(){
 }
 /* Funcion para rellenar los datos de pago.
 * Si se selecciona “Tarjeta” aparecerán tres nuevas cajas de texto para introducir 
-los datos de la 
-tarjeta bancaria.
+los datos de la tarjeta bancaria.
 * Si se selecciona “Efectivo” aparecerá una nueva caja de texto con el importe 
 total del carrito.
 */ 
@@ -189,7 +192,8 @@ function permisoImpresion(){
 tanto la lista de la compra final como el precio final del carrito según
 muestra la imágen.
 * Si no se ha seleccionado forma de pago, deberá aparecer un mensaje 
-"seleccione método de pago".*/
+"seleccione método de pago".
+*/
 
 function imprimir(){
     if(forma_pago.value == "seleccione"){
