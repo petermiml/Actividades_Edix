@@ -1,5 +1,12 @@
 body{
     font-family: monospace;
+    font-size: 1.2em;
+    background-color: #022d6982;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+   
+
 }
 
 #unidades{
@@ -10,6 +17,23 @@ span{
     color: black;
     font-weight: bold;
 }
+
 #cvv{
     width: 30px;
 }
+
+#contenedor{
+    width: 480px;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 10px;
+    
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    background: radial-gradient(at 20px 20px, rgb(244, 252, 255), rgb(71, 129, 255));     /* Da un color degradado desde el centro hacia afuera */
+
+}
+
+
+
