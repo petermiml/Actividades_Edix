@@ -102,7 +102,7 @@ function sumarPrecioCarrito(){
     que el número de unidades no puede ser 0 o negativo.
     */
     if(unidades.value <= 0){
-        aviso3.innerHTML = " &nbsp&nbspEl número de unidades no puede ser menor o igual a 0.";
+        aviso3.innerHTML = " &nbsp&nbspDebe haber másde 0 unidades.";
     }else{
         aviso3.innerHTML = "";
     }

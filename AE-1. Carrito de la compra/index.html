@@ -15,18 +15,18 @@
             <!--Tabla para rellenar artículos, cantidad y el botón de añadir productos.-->
             <table>
                 <tr>
-                    <td><label for="nombre_articulo">Nombre artículo: </label></td>
+                    <td><label for="nombre_articulo" class="texto">Nombre artículo: </label></td>
                     <td><input type="text" name="nombre_articulo" id="nombre_articulo"></td>
                     <td><span id="aviso1" value="####################"></span></td>
                 </tr>
                 <tr>
-                    <td><label for="precio_articulo">Precio artículo: </label></td>
+                    <td><label for="precio_articulo" class="texto">Precio artículo: </label></td>
                     <td><input type="text" name="precio_articulo" id="precio_articulo"></td>
                     <td><span id="aviso2" value=""></span></td>
                 </tr>
 
                 <tr>
-                    <td><label for="unidades">Unidades: </label></td>
+                    <td><label for="unidades" class="texto">Unidades: </label></td>
                     <td><input type="number" name="cantidad_articulo" id="unidades" value="1"></td>
                     <td><span id="aviso3" value=""></span></td>
 
@@ -42,17 +42,17 @@
             <!--Tabla para ver artículos seleccionados y suma de precio total.-->
             <table>
                 <tr>
-                    <td><label for="articulos_en_carrito">Artículos en carrito: </label></td>
+                    <td><label for="articulos_en_carrito" class="texto">Artículos en carrito: </label></td>
                     <td><input type="text" name="articulos_en_carrito" id="articulosEnCarrito" value="" readonly></td>
                 </tr>
                 <tr>
-                    <td><label for="precio_total">Precio total del carrito: </label></td>
+                    <td><label for="precio_total" class="texto">Precio total del carrito: </label></td>
                     <td><input type="text" name="precio_total" id="precio_total" value="0" readonly></td>
             </table>
             <br><br>
 
             <!--Selector de formas de pago. Modificado los métodos de pago (PedroJ)-->
-            <label for="forma_pago">Forma de pago: </label>
+            <label for="forma_pago" class="texto">Forma de pago: </label>
             <select name="forma_pago" id="forma_pago">
                 <option value="seleccione">---seleccione---</option> 
                 <option id="tarjeta" value="tarjeta">Tarjeta</option>
