@@ -32,7 +32,6 @@ span{
     
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     background: radial-gradient(at 20px 20px, rgb(244, 252, 255), rgb(71, 129, 255));     /* Da un color degradado desde el centro hacia afuera */
 
 }
