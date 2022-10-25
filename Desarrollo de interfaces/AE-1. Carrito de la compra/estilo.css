@@ -1,0 +1,51 @@
+body{
+    font-family: monospace;
+    font-size: 1.2em;
+    background-color: #022d6948;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+   /*tamaño de la fuente a 10*/ 
+    font-size: 11px;
+
+}
+
+span{
+    color: black;
+    font-weight: bold;
+}
+
+#unidades{
+    width: 30px;
+}
+
+#cvv{
+    width: 30px;
+}
+
+#contenedor{
+    width: 490px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 10px;
+    
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    background: radial-gradient(at 20px 20px, rgb(244, 252, 255), rgb(71, 129, 255));     /* Da un color degradado desde el centro hacia afuera */
+
+}
+
+#articulosEnCarrito{
+	width: 320px;
+	height: 100px;
+}
+
+.texto{
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+td{
+	padding-bottom: 12px;
+}

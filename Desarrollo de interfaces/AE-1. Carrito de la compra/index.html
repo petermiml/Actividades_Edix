@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="codigo.js"></script>
+    <link rel="stylesheet" href="estilo.css">
+    <title>Carrito de la compra</title>
+</head>
+<body>
+    
+    <div id="contenedor">
+        <form>
+            <!--Tabla para rellenar artículos, cantidad y el botón de añadir productos.-->
+            <table>
+                <tr>
+                    <td><label for="nombre_articulo" class="texto">Nombre artículo: </label></td>
+                    <td><input type="text" name="nombre_articulo" id="nombre_articulo"></td>
+                    <td><span id="aviso1" value="####################"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="precio_articulo" class="texto">Precio artículo (€): </label></td>
+                    <td><input type="text" name="precio_articulo" id="precio_articulo"></td>
+                    <td><span id="aviso2" value=""></span></td>
+                </tr>
+
+                <tr>
+                    <td><label for="unidades" class="texto">Unidades: </label></td>
+                    <td><input type="number" name="cantidad_articulo" id="unidades" value="1"></td>
+                    <td><span id="aviso3" value=""></span></td>
+
+                </tr>
+
+                <tr>
+                    <td><br><input type="button" value="Añadir al carrito" id="btnAddCarrito"></td>
+                    
+                </tr>
+            </table>
+            <br><br>
+            
+            <!--Tabla para ver artículos seleccionados y suma de precio total.-->
+            <table>
+                <tr>
+                    <td><label for="articulos_en_carrito" class="texto">Artículos en carrito: </label></td>
+                    <td><input type="text" name="articulos_en_carrito" id="articulosEnCarrito" value="" readonly></td>
+                </tr>
+                <tr>
+                    <td><label for="precio_total" class="texto">Precio total del carrito (€): </label></td>
+                    <td><input type="text" name="precio_total" id="precio_total" value="0" readonly></td>
+            </table>
+            <br><br>
+
+            <!--Selector de formas de pago. Modificado los métodos de pago (PedroJ)-->
+            <label for="forma_pago" class="texto">Forma de pago: </label>
+            <select name="forma_pago" id="forma_pago">
+                <option value="seleccione">---seleccione---</option> 
+                <option id="tarjeta" value="tarjeta">Tarjeta</option>
+                <option id="efectivo" value="efectivo">Efectivo</option>
+            </select>
+
+                <!--Aquí creamos la dos tablas para rellenar los datos de pago que 
+                estarán ocultada por defecto. -->
+                <table id ="formuDatosTarjeta" >
+                    <br/><br/><br/><br/>
+                <tr>
+                    <td><label for="nombre">Titular tarjeta: </label></td>
+                    <td><input type="text" name="nombre" id="nombre"></td>
+                </tr>
+                <tr>
+                    <td><label for="numeroTarjeta">Número tarjeta: </label></td>
+                    <td><input type="text" name="numeroTarjeta" id="numeroTarjeta"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="cvv">CVV: </label></td>
+                    <td><input type="text" name="cvv" id="cvv"></td>
+                </tr>
+            </table>
+            <br/>
+
+                <table id ="formuDatosEfectivo" >
+                    <tr>
+                        <td><label for="importeEfectivo">Importe efectivo: </label></td>
+                        <td><input type="text" name="importeEfectivo" id="importeEfectivo" value="0" readonly></td>
+                    </tr>
+                </table>
+            <br/><br/><br/> 
+
+            <!--Checkbox para aceptar la condiciones.-->
+            <input type="checkbox" name="acepto_condiciones" id="acepto_condiciones">Acepto las condiciones de compra
+            <br><br><br>
+
+            <!--Botón de imprimir.-->
+            <input type="submit" value="Imprimir" id="btnImprimir" disabled="true">&nbsp;&nbsp;&nbsp;
+            <input type="reset" value="Restablecer" id="btnReset">
+
+        </form>
+    </div>
+</body>
+</html>
