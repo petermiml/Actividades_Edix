@@ -5,7 +5,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Principal {
+public class Servidor {
 
 	public static final int PUERTO = 2022;
 	

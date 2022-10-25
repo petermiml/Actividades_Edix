@@ -14,8 +14,11 @@ public class Cliente {
 	public static final String IP_SERVIDOR = "localHost";
 
 	public static void main(String[] args) {
-		System.out.println("Aplicacion cliente conectando");
-
+		
+		System.out.println("APLICACION CLIENTE CONECTANDO");
+		System.out.println("------------------------------");
+		
+		// Encapsulamos la direccion del servidor.
 		InetSocketAddress direccionServidor = new InetSocketAddress(IP_SERVIDOR, PUERTO);
 		
 		try(Scanner sc = new Scanner(System.in)){
