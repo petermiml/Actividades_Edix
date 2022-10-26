@@ -14,6 +14,7 @@ public class Servidor {
 		
 		System.out.println("Servidor conectando");
 		
+		// Creamos objeto socket para establecer la conexion posteriormente
 		Socket socketAlCliente = null;
 		int usuario = 0;
 		

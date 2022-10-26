@@ -18,7 +18,7 @@ public class Cliente {
 		System.out.println("APLICACION CLIENTE CONECTANDO");
 		System.out.println("------------------------------");
 		
-		// Encapsulamos la direccion del servidor.
+		// Encapsulamos la direccion del servidor
 		InetSocketAddress direccionServidor = new InetSocketAddress(IP_SERVIDOR, PUERTO);
 		
 		try(Scanner sc = new Scanner(System.in)){
