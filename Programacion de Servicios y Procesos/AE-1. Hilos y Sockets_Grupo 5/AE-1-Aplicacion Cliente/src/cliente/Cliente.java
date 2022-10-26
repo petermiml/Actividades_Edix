@@ -24,7 +24,7 @@ public class Cliente {
 		try(Scanner sc = new Scanner(System.in)){
 			
 			System.out.println("CLIENTE: Esperando a que el servidor acepte la conexion");
-			
+			//Aquí creamos el socket que conectará con el sevidor
 			Socket socketAlServidor = new Socket();
 			socketAlServidor.connect(direccionServidor);
 			
