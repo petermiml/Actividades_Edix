@@ -1,6 +1,9 @@
-package secundario;
+package servidor;
+
+import java.util.ArrayList;
 
 public class Libro {
+	//
 	private String isbn;
 	private String titulo;
 	private String autor;
@@ -12,6 +15,7 @@ public class Libro {
 		this.titulo = titulo;
 		this.autor = autor;
 		this.precio = precio;
+		ArrayList <Libro> libros = new ArrayList<>();
 	}
 	
 	public String getIsbn() {
