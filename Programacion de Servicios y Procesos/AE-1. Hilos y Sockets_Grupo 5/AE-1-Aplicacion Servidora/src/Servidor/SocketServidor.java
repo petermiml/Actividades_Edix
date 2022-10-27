@@ -1,11 +1,9 @@
-package principal;
-import java.util.ArrayList;
-import secundario.*;
+package Servidor;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Servidor {
+public class SocketServidor {
 
 	public static final int PUERTO = 2022;
 	
@@ -31,7 +29,7 @@ public class Servidor {
 			System.out.println("SERVIDOR: Usuario numero " + ++usuario + " recibido");
 			
 			//Aqui creamos un hilo para cada peticion de los clientes.
-			new Biblioteca(socketAlCliente);
+			new HiloGestionLibros(socketAlCliente);
 			
 		
 			}
@@ -42,3 +40,5 @@ public class Servidor {
 	}
 
 }
+
+
