@@ -5,10 +5,13 @@ import java.net.Socket;
 
 public class SocketServidor {
 
+	//
 	public static final int PUERTO = 2022;
 	
 	
 	public static void main(String[] args) {
+		
+		Biblioteca biblioteca = new Biblioteca();
 		
 		System.out.println("Servidor conectando");
 		
@@ -31,7 +34,6 @@ public class SocketServidor {
 			//Aqui creamos un hilo para cada peticion de los clientes.
 			new HiloGestionLibros(socketAlCliente);
 			
-		
 			}
 		} catch (Exception e) {
 			System.out.println("Error de conexion");

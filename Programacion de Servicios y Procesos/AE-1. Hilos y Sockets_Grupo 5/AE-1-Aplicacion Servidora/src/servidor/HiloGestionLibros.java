@@ -15,8 +15,9 @@ public class HiloGestionLibros implements Runnable {
 		this.socketAlCliente = socketAlCliente;
 		hilo.start();
 	}
+	
 	@Override
-	public void run() {	
+	public void run() {
 		InputStreamReader entrada = null;
 		PrintStream salida = null;
 		BufferedReader bf = null;
@@ -35,41 +36,52 @@ public class HiloGestionLibros implements Runnable {
 		boolean continuar = true;
 		
 		while (continuar) {
-		opcionRecibida = bf.readLine();
+			// Creamos un array unidimensional con lo que nos llega del cliente separandolo por guion
+			String[] opcionDatos = bf.readLine().split("-");
+			opcion = opcionDatos[0];
+			datos = opcionDatos[1];
 		
-		String[] opcionDatos = opcionRecibida.split("-");
-		opcion = opcionDatos[0];
-		datos = opcionDatos[1];
+			switch(opcion) {
 		
-		switch(opcion) {
-		
-		case "1":
-			salida.println("case 1 ");
-			break;
-			
-		case "2":
-			salida.println("case 2");
-			break;
-			
-		case "3":
-			
-			salida.println("case 3");
-			break;
-			
-		case "4":
-			//anadirLibro(libro);
-			salida.println("case 4");
-			break;	
-			
-			default:
-			salida.println("La opción no es correcta");
-		}
+				case "1":
+					salida.println("case 1 ");
+					break;
+					
+				case "2":
+					salida.println("case 2");
+					break;
+					
+				case "3":
+					
+					salida.println("case 3");
+					break;
+					
+				case "4":
+					
+					String isbn = opcionDatos[1];
+					String titulo = opcionDatos[2];
+					String autor = opcionDatos[3];
+					String precio = opcionDatos[4];
+					
+					String devolver = "Has elegido la opcion " + opcion + 
+							"\n.El isbn del libro introducido es: " + isbn + 
+							"\n.El titulo del libro introducido es: " + titulo +
+							"\n.El autor del libro introducido es: " + autor +
+							"\n.El precio del libro introducido es: " + precio;
+					
+					salida.println(devolver);
+					
+					break;	
+					
+				default:
+					salida.println("La opcion no es correcta");
+			}
 	
-	   socketAlCliente.close();
+			socketAlCliente.close();
 		}
 	}catch(Exception e){
 		System.out.println("Error de conexion en GestionLibros");
+		e.printStackTrace();
 	}
   }
 }
-
