@@ -1,6 +1,7 @@
 package servidor;
 
 public class Libro {
+
 	private String isbn, titulo,autor;
 	private double precio;
 	
