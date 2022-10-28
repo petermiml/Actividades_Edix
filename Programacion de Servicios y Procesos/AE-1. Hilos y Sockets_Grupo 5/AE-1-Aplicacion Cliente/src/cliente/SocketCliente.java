@@ -58,6 +58,8 @@ public class SocketCliente {
 				System.out.println("5*Salir de la aplicacion\n");
 				System.out.println("Introduce el numero de la opcion que desea:");
 				opcion = sc.nextLine();
+				
+				// TODO Convertir esto en un swich-case
 				if("5".equalsIgnoreCase(opcion)) {
 					continuar = false;
 					System.out.println("Fin de conexion");
@@ -79,10 +81,12 @@ public class SocketCliente {
 					
 					salida.println(opcion + "-" + datos);
 					
-					System.out.println("CLIENTE: Esperando respuesta ...... ");
-					String respuesta = entradaBuffer.readLine();
+					System.out.println("CLIENTE: Esperando respuesta ...... \n");
+					String [] respuesta = entradaBuffer.readLine().split("-");
 					
-					System.out.println(respuesta);
+					
+					
+					System.out.println(respuesta[0] + "\n\n- " + respuesta[1] + "\n- " + respuesta[2] + "\n- " + respuesta[3] + "\n- " + respuesta[4] + "\n\n");
 				
 				}else if ("1".equalsIgnoreCase(opcion)) {
 					

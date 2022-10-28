@@ -86,11 +86,11 @@ public class HiloGestionLibros implements Runnable {
 					String autor = opcionDatos[3];
 					String precio = opcionDatos[4];
 					
-					String devolver = "Has elegido la opcion " + opcion + 
-							"\n.El isbn del libro introducido es: " + isbn + 
-							"\n.El titulo del libro introducido es: " + titulo +
-							"\n.El autor del libro introducido es: " + autor +
-							"\n.El precio del libro introducido es: " + precio;
+					String devolver = "Has elegido la opcion " + opcion + 			
+							".-El isbn del libro introducido es: " + isbn + 
+							".-El titulo del libro introducido es: " + titulo +
+							".-El autor del libro introducido es: " + autor +
+							".-El precio del libro introducido es: " + precio;
 					
 					salida.println(devolver);
 					
@@ -107,6 +107,9 @@ public class HiloGestionLibros implements Runnable {
 		
 		socketAlCliente.close();
 
+	}catch(NullPointerException e) {
+		System.out.println("Cada vez que un usuario pulsa en el 5 se genera esta excepcion.");
+		e.printStackTrace();
 	}catch(Exception e){
 		System.out.println("Error de conexion en GestionLibros");
 		e.printStackTrace();
