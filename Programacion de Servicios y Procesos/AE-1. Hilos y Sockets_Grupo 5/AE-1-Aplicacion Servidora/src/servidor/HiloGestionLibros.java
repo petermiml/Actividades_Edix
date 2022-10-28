@@ -11,9 +11,14 @@ public class HiloGestionLibros implements Runnable {
 	Thread hilo;
 	Socket socketAlCliente;
 	private Libro libro;
-	private ArrayList<Libro> libros= null;
 	
+	//Estaba creada una lista de Libros vacia
+	//Hay que instanciar una variable de la clase Biblioteca para que coga todos los libros
+	
+	private Biblioteca biblioteca; 
+		
 	public HiloGestionLibros(Socket socketAlCliente){
+		biblioteca = new Biblioteca(); //Al iniciar el socket, tenemos que inicializar la biblioteca.
 		hilo = new Thread(this);
 		this.socketAlCliente = socketAlCliente;
 		hilo.start();
@@ -46,14 +51,30 @@ public class HiloGestionLibros implements Runnable {
 		
 			switch(opcion) {
 				case "1":
-					salida.println("case 1 ");
+					
+					//Recorro la lista de biblioteca, cojo los libros y comparo el ISBN con lo que me manda 
+					//el usuario.
+					
+					for(Libro l:biblioteca.getLibros()) {
+						if (l.getIsbn().equals(datos)) {
+							salida.println( l.toString());
+						}
+					}
+					salida.println("El ISBN no existe");
 					break;
 					
 				case "2":
-					salida.println("case 2");
+					
+					for (Libro l:biblioteca.getLibros()) {
+						if(l.getTitulo().equals(datos)) {
+							salida.println( l.toString());
+						}
+					}
+					salida.println("El titulo no existe");
 					break;
 					
 				case "3":
+					
 					
 					salida.println("case 3");
 					break;
@@ -78,9 +99,14 @@ public class HiloGestionLibros implements Runnable {
 				default:
 					salida.println("La opcion no es correcta");
 			}
-	
-			socketAlCliente.close();
+			
 		}
+		
+		//Estaba dando error porque cerrabamos el socket dentro del bucle, 
+		//hay que cerrarlo despues del bucle, cuando el cliente cierra la conexion.
+		
+		socketAlCliente.close();
+
 	}catch(Exception e){
 		System.out.println("Error de conexion en GestionLibros");
 		e.printStackTrace();
