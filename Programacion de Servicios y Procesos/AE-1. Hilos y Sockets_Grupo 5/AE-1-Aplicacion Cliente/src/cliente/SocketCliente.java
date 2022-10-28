@@ -9,10 +9,11 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+
 public class SocketCliente {
 	
 	// IP y Puerto a la que nos vamos a conectar
-	public static final int PUERTO = 2022;
+	public static final int PUERTO = 2023;
 	public static final String IP_SERVIDOR = "localHost";
 
 	public static void main(String[] args) {
@@ -83,7 +84,33 @@ public class SocketCliente {
 					
 					System.out.println(respuesta);
 				
-				}else{
+				}else if ("1".equalsIgnoreCase(opcion)) {
+					
+					System.out.println("Por favor, escribe el ISBN del libro que desea consultar :");
+					String isbn = sc.nextLine();
+					String mensaje = opcion + "-" + isbn;
+					
+					salida.println(mensaje);
+					String respuesta = entradaBuffer.readLine();
+					
+					System.out.println(respuesta);
+					
+					
+				}else if ("2".equalsIgnoreCase(opcion)) {
+					
+					System.out.println("Por favor, escribe el nombre del titulo del libro que desea consultar :");
+					String titulo = sc.nextLine();
+					String mensaje = opcion + "-" + titulo;
+					
+					salida.println(mensaje);
+					String respuesta = entradaBuffer.readLine();
+					
+					System.out.println(respuesta);
+					
+					
+				}
+				
+				else{
 				System.out.println("Introduce los datos:");
 				datos = sc.nextLine();
 				
