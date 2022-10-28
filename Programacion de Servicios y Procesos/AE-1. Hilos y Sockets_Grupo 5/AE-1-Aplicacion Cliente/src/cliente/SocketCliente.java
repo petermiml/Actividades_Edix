@@ -33,16 +33,21 @@ public class SocketCliente {
 			
 			System.out.println("CLIENTE: Conexion establecida... a " + IP_SERVIDOR + 
 					" por el puerto " + PUERTO + "\n");
+			
 			//Creamos el objeto InputStreamReader que usara el socket como entrada de datos.
 			InputStreamReader entrada = new InputStreamReader(socketAlServidor.getInputStream());
+			
 			//Creamos el objeto BufferedReader que sirve para leer datos recibidos.
 			BufferedReader entradaBuffer = new BufferedReader(entrada);
-			//Creamos el objeto PrintStream que usara el socket como slida de datos.
+			
+			//Creamos el objeto PrintStream que usara el socket como salida de datos.
 			PrintStream salida = new PrintStream(socketAlServidor.getOutputStream());
 			
 			String opcion = "";
 			String datos = "";
+			
 			boolean continuar = true;
+			
 			do {
 				System.out.println("Elige el numero de la opcion que desea y luego anade los datos de la opcion:\n");
 				System.out.println("1*Consultar libro por ISBN");
@@ -55,9 +60,33 @@ public class SocketCliente {
 				if("5".equalsIgnoreCase(opcion)) {
 					continuar = false;
 					System.out.println("Fin de conexion");
-				}else {
+				}else if ("4".equalsIgnoreCase(opcion)){
+					
+					System.out.println("Por favor, escribe el ISBN del libro a introducir:");
+					String isbn = sc.nextLine();
+					
+					System.out.println("Por favor, escribe el titulo del libro a introducir:");
+					String titulo = sc.nextLine();
+
+					System.out.println("Por favor, escribe el autor del libro a introducir:");
+					String autor = sc.nextLine();
+					
+					System.out.println("Por favor, escribe el precio del libro a introducir:");
+					String precio = sc.nextLine();
+					
+					datos = isbn + "-" + titulo + "-" + autor + "-" + precio;
+					
+					salida.println(opcion + "-" + datos);
+					
+					System.out.println("CLIENTE: Esperando respuesta ...... ");
+					String respuesta = entradaBuffer.readLine();
+					
+					System.out.println(respuesta);
+				
+				}else{
 				System.out.println("Introduce los datos:");
 				datos = sc.nextLine();
+				
 				
 				String datosEnviados = opcion +"-"+datos;
 				
@@ -69,13 +98,17 @@ public class SocketCliente {
 				System.out.println(respuesta);
 				}
 			}while(continuar);
+			
 			socketAlServidor.close();
+			
 		} catch (UnknownHostException e) {
 			System.err.println("CLIENTE: No encuentro el servidor en la direccion" + IP_SERVIDOR);
 			e.printStackTrace();
+			
 		} catch (IOException e) {
 			System.err.println("CLIENTE: Error de entrada/salida");
 			e.printStackTrace();	
+			
 		} catch (Exception e) {
 				System.out.println("Error en la conexion con el servidor");
 				e.printStackTrace();

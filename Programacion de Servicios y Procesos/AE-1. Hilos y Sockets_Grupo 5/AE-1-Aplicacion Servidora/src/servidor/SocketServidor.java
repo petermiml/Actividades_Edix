@@ -11,6 +11,8 @@ public class SocketServidor {
 	
 	public static void main(String[] args) {
 		
+		Biblioteca biblioteca = new Biblioteca();
+		
 		System.out.println("Servidor conectando");
 		
 		// Creamos objeto socket para establecer la conexion posteriormente
@@ -32,7 +34,6 @@ public class SocketServidor {
 			//Aqui creamos un hilo para cada peticion de los clientes.
 			new HiloGestionLibros(socketAlCliente);
 			
-		
 			}
 		} catch (Exception e) {
 			System.out.println("Error de conexion");
