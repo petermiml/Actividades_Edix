@@ -4,11 +4,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class HiloGestionLibros implements Runnable {
 	
 	Thread hilo;
 	Socket socketAlCliente;
+	private Libro libro;
+	private ArrayList<Libro> libros= null;
 	
 	public HiloGestionLibros(Socket socketAlCliente){
 		hilo = new Thread(this);
@@ -42,7 +45,6 @@ public class HiloGestionLibros implements Runnable {
 			datos = opcionDatos[1];
 		
 			switch(opcion) {
-		
 				case "1":
 					salida.println("case 1 ");
 					break;

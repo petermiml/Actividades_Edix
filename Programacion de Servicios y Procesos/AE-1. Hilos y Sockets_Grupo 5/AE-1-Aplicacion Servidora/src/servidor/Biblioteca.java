@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Biblioteca{
 
 		private Libro libro;
+    
 		private ArrayList <Libro> libros = new ArrayList<Libro>();
 
 		Libro libro1 = new Libro("23568525","El senor de los anillos","John Ronald Reuel Tolkien", 20);
@@ -13,7 +14,7 @@ public class Biblioteca{
 		Libro libro4 = new Libro("32125455","Rebelion en la granja", "George Orwell", 15);
 		Libro libro5 = new Libro("96584325","Los pilares de la Tierra", "Ken Follett", 30);
 		
-		// Cuando se crea el objeto biblioteca, se añaden los libros especificados por el ejercidio al ArrayList
+		// Cuando se crea el objeto biblioteca, se aÃ±aden los libros especificados por el ejercidio al ArrayList
 		public Biblioteca() {
 			super();
 			this.libros.add(libro1);
@@ -42,4 +43,5 @@ public class Biblioteca{
 		public synchronized void addLibro(Libro libro) {
 			 libros.add(libro);	 
 		}
+
 }
