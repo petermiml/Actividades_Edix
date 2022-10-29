@@ -6,9 +6,8 @@ import java.net.Socket;
 
 public class SocketServidor {
 
-	//
 	public static final int PUERTO = 2023;
-	
+	public static Biblioteca biblioteca = new Biblioteca();
 	
 	public static void main(String[] args) {
 		
@@ -32,8 +31,11 @@ public class SocketServidor {
 			//Con este metodo acceptamos la conexion al cliente.
 			socketAlCliente = servidor.accept();
 			System.out.println("SERVIDOR: Usuario numero " + ++usuario + " recibido");
+			
 			//Aqui creamos un hilo para cada peticion de los clientes.
-			new HiloGestionLibros(socketAlCliente);
+			Thread h1 = new HiloGestionLibros(socketAlCliente, biblioteca);
+			
+			h1.start();
 			
 			}
 		} catch (Exception e) {

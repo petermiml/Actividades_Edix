@@ -8,11 +8,11 @@ public class Biblioteca{
     
 		private ArrayList <Libro> libros = new ArrayList<Libro>();
 
-		Libro libro1 = new Libro("23568525","El senor de los anillos","John Ronald Reuel Tolkien", 20);
-		Libro libro2 = new Libro("55258771","El Silmarillion","John Ronald Reuel Tolkien", 23);
-		Libro libro3 = new Libro("85857895","1984", "George Orwell", 10);
-		Libro libro4 = new Libro("32125455","Rebelion en la granja", "George Orwell", 15);
-		Libro libro5 = new Libro("96584325","Los pilares de la Tierra", "Ken Follett", 30);
+		Libro libro1 = new Libro("23568525","El senor de los anillos","John Ronald Reuel Tolkien", "20");
+		Libro libro2 = new Libro("55258771","El Silmarillion","John Ronald Reuel Tolkien", "23");
+		Libro libro3 = new Libro("85857895","1984", "George Orwell", "10");
+		Libro libro4 = new Libro("32125455","Rebelion en la granja", "George Orwell", "15");
+		Libro libro5 = new Libro("96584325","Los pilares de la Tierra", "Ken Follett", "30");
 		
 		// Cuando se crea el objeto biblioteca, se añaden los libros especificados por el ejercidio al ArrayList
 		public Biblioteca() {

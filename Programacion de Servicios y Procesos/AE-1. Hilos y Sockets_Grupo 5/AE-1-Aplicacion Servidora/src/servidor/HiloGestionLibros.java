@@ -6,24 +6,25 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class HiloGestionLibros implements Runnable {
+public class HiloGestionLibros extends Thread {
 	
 	Thread hilo;
 	Socket socketAlCliente;
-	private Libro libro;
-	
-	//Estaba creada una lista de Libros vacia
-	//Hay que instanciar una variable de la clase Biblioteca para que coga todos los libros
-	
-	private Biblioteca biblioteca; 
+	public Biblioteca biblioteca; 
 		
-	public HiloGestionLibros(Socket socketAlCliente){
-		biblioteca = new Biblioteca(); //Al iniciar el socket, tenemos que inicializar la biblioteca.
+	public HiloGestionLibros(Socket socketAlCliente, Biblioteca biblioteca){
+		
 		hilo = new Thread(this);
 		this.socketAlCliente = socketAlCliente;
-		hilo.start();
+		this.biblioteca = biblioteca;
 	}
 	
+	public synchronized void addLibro(String isbn, String titulo, String autor, String precio) {
+		
+		Libro nlibro = new Libro(isbn, titulo, autor, precio);
+		biblioteca.addLibro(nlibro);
+	}
+
 	@Override
 	public void run() {
 		InputStreamReader entrada = null;
@@ -85,14 +86,23 @@ public class HiloGestionLibros implements Runnable {
 					String titulo = opcionDatos[2];
 					String autor = opcionDatos[3];
 					String precio = opcionDatos[4];
-					
+					/*
 					String devolver = "Has elegido la opcion " + opcion + 			
 							".-El isbn del libro introducido es: " + isbn + 
 							".-El titulo del libro introducido es: " + titulo +
 							".-El autor del libro introducido es: " + autor +
 							".-El precio del libro introducido es: " + precio;
+					*/
 					
-					salida.println(devolver);
+					// Añade el libro a la biblioteca
+					addLibro(isbn, titulo, autor, precio);	
+					
+					// Obtenemos ultima posicion del ArrayList
+					int tamaBiblioteca = biblioteca.getLibros().size();
+					int ultimaPosicion = tamaBiblioteca -1;
+
+					// Devolvemos cadena "[TITULO_LIBRO_AÑADIDO] añadido"
+					salida.println(biblioteca.getLibros().get(ultimaPosicion).getTitulo() + " añadido.");	// SALTA ERROR
 					
 					break;	
 					

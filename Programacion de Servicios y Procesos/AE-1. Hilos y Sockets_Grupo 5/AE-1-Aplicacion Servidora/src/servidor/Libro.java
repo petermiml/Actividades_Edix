@@ -2,10 +2,9 @@ package servidor;
 
 public class Libro {
 
-	private String isbn, titulo,autor;
-	private double precio;
+	private String isbn, titulo,autor, precio;
 	
-	public Libro(String isbn, String titulo, String autor, double precio) {
+	public Libro(String isbn, String titulo, String autor, String precio) {
 		super();
 		this.isbn = isbn;
 		this.titulo = titulo;
@@ -31,10 +30,10 @@ public class Libro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-	public double getPrecio() {
+	public String getPrecio() {
 		return precio;
 	}
-	public void setPrecio(double precio) {
+	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
 
