@@ -1,5 +1,4 @@
 package servidor;
-import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,8 +9,6 @@ public class SocketServidor {
 	public static Biblioteca biblioteca = new Biblioteca();
 	
 	public static void main(String[] args) {
-		
-		//Biblioteca biblioteca = new Biblioteca();
 		
 		System.out.println("Servidor conectando");
 		

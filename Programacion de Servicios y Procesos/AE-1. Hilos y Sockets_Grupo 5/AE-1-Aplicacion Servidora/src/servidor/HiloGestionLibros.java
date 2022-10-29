@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class HiloGestionLibros extends Thread {
 	
@@ -38,10 +37,8 @@ public class HiloGestionLibros extends Thread {
 		
 		salida = new PrintStream(socketAlCliente.getOutputStream());
 		
-		String opcionRecibida = "";
 		String opcion = "";
 		String datos = "";
-		
 		boolean continuar = true;
 		
 		while (continuar) {
@@ -53,31 +50,16 @@ public class HiloGestionLibros extends Thread {
 			switch(opcion) {
 				case "1":
 					
-					//Recorro la lista de biblioteca, cojo los libros y comparo el ISBN con lo que me manda 
-					//el usuario.
-					
-					for(Libro l:biblioteca.getLibros()) {
-						if (l.getIsbn().equals(datos)) {
-							salida.println( l.toString());
-						}
-					}
-					salida.println("El ISBN no existe");
+					salida.println(biblioteca.buscarLibroIsbn(datos));
 					break;
 					
 				case "2":
 					
-					for (Libro l:biblioteca.getLibros()) {
-						if(l.getTitulo().equals(datos)) {
-							salida.println( l.toString());
-						}
-					}
-					salida.println("El titulo no existe");
+					salida.println(biblioteca.buscarLibroTitulo(datos));
 					break;
 					
 				case "3":
-					
-					
-					salida.println("case 3");
+					salida.println("case3");
 					break;
 					
 				case "4":
@@ -104,17 +86,14 @@ public class HiloGestionLibros extends Thread {
 					// Devolvemos cadena "[TITULO_LIBRO_AÑADIDO] añadido"
 					salida.println(biblioteca.getLibros().get(ultimaPosicion).getTitulo() + " añadido.");	// SALTA ERROR
 					
-					break;	
-					
-				default:
-					salida.println("La opcion no es correcta");
-			}
-			
+					break;
+				case "5":
+					System.out.println("El usuario ha cerrado la conexion");
+					salida.println(datos);
+					continuar = false;
+					break;
+			}	
 		}
-		
-		//Estaba dando error porque cerrabamos el socket dentro del bucle, 
-		//hay que cerrarlo despues del bucle, cuando el cliente cierra la conexion.
-		
 		socketAlCliente.close();
 
 	}catch(NullPointerException e) {

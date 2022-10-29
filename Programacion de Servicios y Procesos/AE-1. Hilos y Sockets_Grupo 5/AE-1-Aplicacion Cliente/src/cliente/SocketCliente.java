@@ -46,11 +46,11 @@ public class SocketCliente {
 			
 			String opcion = "";
 			String datos = "";
-			
+			String respuesta = "";
 			boolean continuar = true;
 			
 			do {
-				System.out.println("Elige el numero de la opcion que desea y luego anade los datos de la opcion:\n");
+				System.out.println("Elige el numero de la opcion que desea:\n");
 				System.out.println("1*Consultar libro por ISBN");
 				System.out.println("2*Consultar libro por titulo");
 				System.out.println("3*Consultar libros por autor");
@@ -60,19 +60,37 @@ public class SocketCliente {
 				opcion = sc.nextLine();
 				
 				// TODO Convertir esto en un swich-case
-				if("5".equalsIgnoreCase(opcion)) {
-					continuar = false;
-					System.out.println("Fin de conexion");
-				}else if ("4".equalsIgnoreCase(opcion)){
+		       if ("1".equalsIgnoreCase(opcion)) {
+				
+				    System.out.println("Por favor, escribe el ISBN del libro que desea consultar :");
+				    String isbn = sc.nextLine();
+				    String mensaje = opcion + "-" + isbn;
+				    salida.println(mensaje);
+				    respuesta = entradaBuffer.readLine();
+				    System.out.println(respuesta);
+				
+			  }else if ("2".equalsIgnoreCase(opcion)) {
+				
+				    System.out.println("Por favor, escribe el nombre del titulo del libro que desea consultar :");
+				    String titulo = sc.nextLine();
+				    String mensaje = opcion + "-" + titulo;
+				    salida.println(mensaje);
+				    respuesta = entradaBuffer.readLine();
+				    System.out.println(respuesta);
+				    
+			  //}else if ("3".equalsIgnoreCase(opcion)){
+				  //Para Dani
+				  
+			  }else if ("4".equalsIgnoreCase(opcion)){
 					
-					System.out.println("Por favor, escribe el ISBN del libro a introducir:");
-					String isbn = sc.nextLine();
-					
-					System.out.println("Por favor, escribe el titulo del libro a introducir:");
-					String titulo = sc.nextLine();
+				    System.out.println("Por favor, escribe el ISBN del libro a introducir:");
+				    String isbn = sc.nextLine();
+				 	
+				    System.out.println("Por favor, escribe el titulo del libro a introducir:");
+				    String titulo = sc.nextLine();
 
-					System.out.println("Por favor, escribe el autor del libro a introducir:");
-					String autor = sc.nextLine();
+				    System.out.println("Por favor, escribe el autor del libro a introducir:");
+				    String autor = sc.nextLine();
 					
 					System.out.println("Por favor, escribe el precio del libro a introducir:");
 					String precio = sc.nextLine();
@@ -82,54 +100,22 @@ public class SocketCliente {
 					salida.println(opcion + "-" + datos);
 					
 					System.out.println("CLIENTE: Esperando respuesta ...... \n");
-					String respuesta = entradaBuffer.readLine();
-					
-					System.out.println(respuesta);
-				
-				}else if ("1".equalsIgnoreCase(opcion)) {
-					
-					System.out.println("Por favor, escribe el ISBN del libro que desea consultar :");
-					String isbn = sc.nextLine();
-					String mensaje = opcion + "-" + isbn;
-					
-					salida.println(mensaje);
-					String respuesta = entradaBuffer.readLine();
+					respuesta = entradaBuffer.readLine();
 					
 					System.out.println(respuesta);
 					
-					
-				}else if ("2".equalsIgnoreCase(opcion)) {
-					
-					System.out.println("Por favor, escribe el nombre del titulo del libro que desea consultar :");
-					String titulo = sc.nextLine();
-					String mensaje = opcion + "-" + titulo;
-					
-					salida.println(mensaje);
-					String respuesta = entradaBuffer.readLine();
-					
-					System.out.println(respuesta);
-					
-					
+			}else if("5".equalsIgnoreCase(opcion)) {
+					continuar = false;
+					System.out.println("Fin de conexion");	
+			}else{
+					System.out.println("la opcion no es correcta");
 				}
-				
-				else{
-				System.out.println("Introduce los datos:");
-				datos = sc.nextLine();
-				
-				
-				String datosEnviados = opcion +"-"+datos;
-				
-				salida.println(datosEnviados);
-				
-				System.out.println("CLIENTE: Esperando respuesta ...... ");
-				String respuesta = entradaBuffer.readLine();
-				
-				System.out.println(respuesta);
-				}
+		       
 			}while(continuar);
-			
+			//Cerramos la conexion fuera del bucle 'do'
 			socketAlServidor.close();
 			
+		//Recogemos las excepciones con los 'catch'	
 		} catch (UnknownHostException e) {
 			System.err.println("CLIENTE: No encuentro el servidor en la direccion" + IP_SERVIDOR);
 			e.printStackTrace();

@@ -6,7 +6,7 @@ public class Biblioteca{
 
 		private Libro libro;
     
-		private ArrayList <Libro> libros = new ArrayList<Libro>();
+		public ArrayList <Libro> libros = new ArrayList<Libro>();
 
 		Libro libro1 = new Libro("23568525","El senor de los anillos","John Ronald Reuel Tolkien", "20");
 		Libro libro2 = new Libro("55258771","El Silmarillion","John Ronald Reuel Tolkien", "23");
@@ -14,7 +14,7 @@ public class Biblioteca{
 		Libro libro4 = new Libro("32125455","Rebelion en la granja", "George Orwell", "15");
 		Libro libro5 = new Libro("96584325","Los pilares de la Tierra", "Ken Follett", "30");
 		
-		// Cuando se crea el objeto biblioteca, se añaden los libros especificados por el ejercidio al ArrayList
+		// Cuando se crea el objeto biblioteca, se anaden los libros especificados por el ejercidio al ArrayList
 		public Biblioteca() {
 			super();
 			this.libros.add(libro1);
@@ -44,5 +44,22 @@ public class Biblioteca{
 			 libros.add(libro);	 
 			 
 		}
-
+		public String buscarLibroIsbn (String isbn) {
+		for(Libro l:libros) {
+			if (l.getIsbn().equalsIgnoreCase(isbn)) {
+				return l.toString();
+			}
+			}
+				return ("El ISBN no existe");
+				
+		}
+		public String buscarLibroTitulo (String titulo) {
+		for(Libro l:libros) {
+			if (l.getTitulo().equalsIgnoreCase(titulo)) {
+				return l.toString();
+			}
+			}
+				return ("El titulo no existe");
+				
+		}
 }
