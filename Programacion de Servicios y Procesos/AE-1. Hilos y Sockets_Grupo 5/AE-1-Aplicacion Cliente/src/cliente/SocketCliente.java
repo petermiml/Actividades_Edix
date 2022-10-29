@@ -82,11 +82,9 @@ public class SocketCliente {
 					salida.println(opcion + "-" + datos);
 					
 					System.out.println("CLIENTE: Esperando respuesta ...... \n");
-					String [] respuesta = entradaBuffer.readLine().split("-");
+					String respuesta = entradaBuffer.readLine();
 					
-					
-					
-					System.out.println(respuesta[0] + "\n\n- " + respuesta[1] + "\n- " + respuesta[2] + "\n- " + respuesta[3] + "\n- " + respuesta[4] + "\n\n");
+					System.out.println(respuesta);
 				
 				}else if ("1".equalsIgnoreCase(opcion)) {
 					
