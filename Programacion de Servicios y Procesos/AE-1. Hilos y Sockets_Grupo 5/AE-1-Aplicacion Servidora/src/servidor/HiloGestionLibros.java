@@ -68,28 +68,17 @@ public class HiloGestionLibros extends Thread {
 					String titulo = opcionDatos[2];
 					String autor = opcionDatos[3];
 					String precio = opcionDatos[4];
-					/*
-					String devolver = "Has elegido la opcion " + opcion + 			
-							".-El isbn del libro introducido es: " + isbn + 
-							".-El titulo del libro introducido es: " + titulo +
-							".-El autor del libro introducido es: " + autor +
-							".-El precio del libro introducido es: " + precio;
-					*/
 					
 					// Añade el libro a la biblioteca
 					addLibro(isbn, titulo, autor, precio);	
-					
-					// Obtenemos ultima posicion del ArrayList
-					int tamaBiblioteca = biblioteca.getLibros().size();
-					int ultimaPosicion = tamaBiblioteca -1;
 
 					// Devolvemos cadena "[TITULO_LIBRO_AÑADIDO] añadido"
-					salida.println(biblioteca.getLibros().get(ultimaPosicion).getTitulo() + " añadido.");	// SALTA ERROR
+					salida.println(titulo + " añadido.");	// SALTA ERROR
 					
 					break;
 				case "5":
 					System.out.println("El usuario ha cerrado la conexion");
-					salida.println(datos);
+					//salida.println(datos);
 					continuar = false;
 					break;
 			}	
@@ -97,8 +86,7 @@ public class HiloGestionLibros extends Thread {
 		socketAlCliente.close();
 
 	}catch(NullPointerException e) {
-		System.out.println("Cada vez que un usuario pulsa en el 5 se genera esta excepcion.");
-		e.printStackTrace();
+		
 	}catch(Exception e){
 		System.out.println("Error de conexion en GestionLibros");
 		e.printStackTrace();
