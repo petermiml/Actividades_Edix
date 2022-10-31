@@ -78,11 +78,16 @@ public class SocketCliente {
 				    System.out.println(respuesta);
 				    break;
 				case "3":
-					 System.out.println("Por favor, escribe el nombre del autor del libro que desea consultar: ");
+					System.out.println("Por favor, escribe el nombre del autor del libro que desea consultar: ");
 				    String autor = sc.nextLine();
 				    mensaje = opcion + "-" + autor;
 				    salida.println(mensaje);
 				    respuesta = entradaBuffer.readLine();
+				    String [] aRespuesta = respuesta.split("-");
+				    respuesta = "";
+				    for(int i=0; i<aRespuesta.length;i++) {
+				    	respuesta += aRespuesta[i] + "\n";
+				    }
 				    System.out.println(respuesta);
 				    break;
 				case "4":

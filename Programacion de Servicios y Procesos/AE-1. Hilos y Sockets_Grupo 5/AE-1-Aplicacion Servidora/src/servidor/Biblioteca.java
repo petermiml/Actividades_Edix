@@ -53,22 +53,26 @@ public class Biblioteca{
 				return ("El ISBN no existe");
 				
 		}
+		
 		public String buscarLibroTitulo (String titulo) {
-		for(Libro l:libros) {
-			if (l.getTitulo().equalsIgnoreCase(titulo)) {
-				return l.toString();
-			}
-			}
-				return ("El titulo no existe");
-				
-		}
-		public String buscarLibroAutor (String autor) {
 			for(Libro l:libros) {
-				if (l.getAutor().equalsIgnoreCase(autor)) {
+				if (l.getTitulo().equalsIgnoreCase(titulo)) {
 					return l.toString();
 				}
-				}
-					return ("El autor no existe");
-					
 			}
+				return ("El titulo no existe");		
+		}
+		
+		
+		public String buscarLibroAutor (String titulo) {
+			String listaLibros = "";
+			
+			for(Libro l:libros) {
+				if (l.getAutor().equalsIgnoreCase(titulo)) {
+					listaLibros += "-" + l.toString();
+				}
+			}
+			
+			return listaLibros;
+		}
 }
