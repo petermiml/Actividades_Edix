@@ -59,7 +59,7 @@ public class HiloGestionLibros extends Thread {
 					break;
 					
 				case "3":
-					salida.println("case3");
+					salida.println(biblioteca.buscarLibroAutor(datos));
 					break;
 					
 				case "4":

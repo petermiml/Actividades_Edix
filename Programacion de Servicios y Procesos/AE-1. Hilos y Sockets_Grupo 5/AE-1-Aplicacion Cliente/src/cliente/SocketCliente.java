@@ -62,7 +62,7 @@ public class SocketCliente {
 				
 				switch (opcion) {
 				case "1":
-					System.out.println("Por favor, escribe el ISBN del libro que desea consultar :");
+					System.out.println("Por favor, escribe el ISBN del libro que desea consultar: ");
 				    String isbn = sc.nextLine();
 				    String mensaje = opcion + "-" + isbn;
 				    salida.println(mensaje);
@@ -70,24 +70,32 @@ public class SocketCliente {
 				    System.out.println(respuesta);
 					break;
 				case "2":
-					 System.out.println("Por favor, escribe el nombre del titulo del libro que desea consultar :");
+					 System.out.println("Por favor, escribe el nombre del titulo del libro que desea consultar: ");
 				    String titulo = sc.nextLine();
 				    mensaje = opcion + "-" + titulo;
 				    salida.println(mensaje);
 				    respuesta = entradaBuffer.readLine();
 				    System.out.println(respuesta);
 				    break;
+				case "3":
+					 System.out.println("Por favor, escribe el nombre del autor del libro que desea consultar: ");
+				    String autor = sc.nextLine();
+				    mensaje = opcion + "-" + autor;
+				    salida.println(mensaje);
+				    respuesta = entradaBuffer.readLine();
+				    System.out.println(respuesta);
+				    break;
 				case "4":
-					System.out.println("Por favor, escribe el ISBN del libro a introducir:");
+					System.out.println("Por favor, escribe el ISBN del libro a introducir: ");
 				    isbn = sc.nextLine();
 				 	
-				    System.out.println("Por favor, escribe el titulo del libro a introducir:");
+				    System.out.println("Por favor, escribe el titulo del libro a introducir: ");
 				    titulo = sc.nextLine();
 
-				    System.out.println("Por favor, escribe el autor del libro a introducir:");
-				    String autor = sc.nextLine();
+				    System.out.println("Por favor, escribe el autor del libro a introducir: ");
+				    autor = sc.nextLine();
 					
-					System.out.println("Por favor, escribe el precio del libro a introducir:");
+					System.out.println("Por favor, escribe el precio del libro a introducir: ");
 					String precio = sc.nextLine();
 					
 					datos = isbn + "-" + titulo + "-" + autor + "-" + precio;
