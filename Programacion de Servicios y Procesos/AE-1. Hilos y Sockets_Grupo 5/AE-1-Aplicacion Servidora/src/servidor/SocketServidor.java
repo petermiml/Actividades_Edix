@@ -29,9 +29,8 @@ public class SocketServidor {
 			socketAlCliente = servidor.accept();
 			System.out.println("SERVIDOR: Usuario numero " + ++usuario + " recibido");
 			
-			//Aqui creamos un hilo para cada peticion de los clientes.
-			Thread h1 = new HiloGestionLibros(socketAlCliente, biblioteca);
-			
+			//Aqui creamos un hilo para cada peticion de los clientes y lo arrancamos.
+			Thread h1 = new HiloGestionLibros(socketAlCliente, biblioteca);	
 			h1.start();
 			
 			}

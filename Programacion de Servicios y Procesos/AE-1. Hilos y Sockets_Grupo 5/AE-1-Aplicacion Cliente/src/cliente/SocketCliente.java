@@ -57,37 +57,32 @@ public class SocketCliente {
 				System.out.println("4*Anadir libro");
 				System.out.println("5*Salir de la aplicacion\n");
 				System.out.println("Introduce el numero de la opcion que desea:");
+				
 				opcion = sc.nextLine();
 				
-				// TODO Convertir esto en un swich-case
-		       if ("1".equalsIgnoreCase(opcion)) {
-				
-				    System.out.println("Por favor, escribe el ISBN del libro que desea consultar :");
+				switch (opcion) {
+				case "1":
+					System.out.println("Por favor, escribe el ISBN del libro que desea consultar :");
 				    String isbn = sc.nextLine();
 				    String mensaje = opcion + "-" + isbn;
 				    salida.println(mensaje);
 				    respuesta = entradaBuffer.readLine();
 				    System.out.println(respuesta);
-				
-			  }else if ("2".equalsIgnoreCase(opcion)) {
-				
-				    System.out.println("Por favor, escribe el nombre del titulo del libro que desea consultar :");
+					break;
+				case "2":
+					 System.out.println("Por favor, escribe el nombre del titulo del libro que desea consultar :");
 				    String titulo = sc.nextLine();
-				    String mensaje = opcion + "-" + titulo;
+				    mensaje = opcion + "-" + titulo;
 				    salida.println(mensaje);
 				    respuesta = entradaBuffer.readLine();
 				    System.out.println(respuesta);
-				    
-			  //}else if ("3".equalsIgnoreCase(opcion)){
-				  //Para Dani
-				  
-			  }else if ("4".equalsIgnoreCase(opcion)){
-					
-				    System.out.println("Por favor, escribe el ISBN del libro a introducir:");
-				    String isbn = sc.nextLine();
+				    break;
+				case "4":
+					System.out.println("Por favor, escribe el ISBN del libro a introducir:");
+				    isbn = sc.nextLine();
 				 	
 				    System.out.println("Por favor, escribe el titulo del libro a introducir:");
-				    String titulo = sc.nextLine();
+				    titulo = sc.nextLine();
 
 				    System.out.println("Por favor, escribe el autor del libro a introducir:");
 				    String autor = sc.nextLine();
@@ -103,15 +98,20 @@ public class SocketCliente {
 					respuesta = entradaBuffer.readLine();
 					
 					System.out.println(respuesta);
+					break;
 					
-			}else if("5".equalsIgnoreCase(opcion)) {
+				case "5":
 					continuar = false;
-					System.out.println("Fin de conexion");	
-			}else{
-					System.out.println("la opcion no es correcta");
+					System.out.println("Fin de conexion");
+					break;
+
+				default:
+					System.out.println("Opcion incorrecta.");
+					break;
 				}
 		       
 			}while(continuar);
+			
 			//Cerramos la conexion fuera del bucle 'do'
 			socketAlServidor.close();
 			
