@@ -7,6 +7,7 @@ public class SocketServidor {
 
 	public static final int PUERTO = 2023;
 	public static Biblioteca biblioteca = new Biblioteca();
+	public static int usuario ;
 	
 	public static void main(String[] args) {
 		
@@ -14,7 +15,7 @@ public class SocketServidor {
 		
 		// Creamos objeto socket para establecer la conexion posteriormente
 		Socket socketAlCliente = null;
-		int usuario = 0;
+		
 		
 		try (ServerSocket servidor = new ServerSocket()){
 			
@@ -27,10 +28,11 @@ public class SocketServidor {
 			
 			//Con este metodo acceptamos la conexion al cliente.
 			socketAlCliente = servidor.accept();
-			System.out.println("SERVIDOR: Usuario numero " + ++usuario + " recibido");
+			usuario++;
+			System.out.println("SERVIDOR: Usuario numero " + usuario + " recibido");
 			
 			//Aqui creamos un hilo para cada peticion de los clientes y lo arrancamos.
-			Thread h1 = new HiloGestionLibros(socketAlCliente, biblioteca);	
+			Thread h1 = new HiloGestionLibros(socketAlCliente, biblioteca, usuario);	
 			h1.start();
 			
 			}

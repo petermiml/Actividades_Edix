@@ -10,12 +10,15 @@ public class HiloGestionLibros extends Thread {
 	Thread hilo;
 	Socket socketAlCliente;
 	public Biblioteca biblioteca; 
-		
-	public HiloGestionLibros(Socket socketAlCliente, Biblioteca biblioteca){
+	public SocketServidor socketServidor;
+	public int usuario;
+	public HiloGestionLibros(Socket socketAlCliente, Biblioteca biblioteca, int usuario){
 		
 		hilo = new Thread(this);
 		this.socketAlCliente = socketAlCliente;
 		this.biblioteca = biblioteca;
+		this.usuario = usuario;
+		usuario++;
 	}
 	
 	public synchronized void addLibro(String isbn, String titulo, String autor, String precio) {
@@ -36,12 +39,13 @@ public class HiloGestionLibros extends Thread {
 		bf = new BufferedReader(entrada);
 		
 		salida = new PrintStream(socketAlCliente.getOutputStream());
-		
+	
 		String opcion = "";
 		String datos = "";
 		boolean continuar = true;
 		
 		while (continuar) {
+			
 			// Creamos un array unidimensional con lo que nos llega del cliente separandolo por guion
 			String[] opcionDatos = bf.readLine().split("-");
 			opcion = opcionDatos[0];
@@ -73,12 +77,11 @@ public class HiloGestionLibros extends Thread {
 					addLibro(isbn, titulo, autor, precio);	
 
 					// Devolvemos cadena "[TITULO_LIBRO_AÑADIDO] añadido"
-					salida.println(titulo + " añadido.");	// SALTA ERROR
+					salida.println("El libro: "+ titulo + " se ha añadido.");	// SALTA ERROR
 					
 					break;
 				case "5":
-					System.out.println("El usuario ha cerrado la conexion");
-					//salida.println(datos);
+				System.out.println(datos + usuario);
 					continuar = false;
 					break;
 			}	
