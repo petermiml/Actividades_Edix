@@ -64,11 +64,11 @@ public class Biblioteca{
 		}
 		
 		
-		public String buscarLibroAutor (String titulo) {
+		public String buscarLibroAutor (String autor) {
 			String listaLibros = "";
 			
 			for(Libro l:libros) {
-				if (l.getAutor().equalsIgnoreCase(titulo)) {
+				if (l.getAutor().equalsIgnoreCase(autor)) {
 					listaLibros += "-" + l.toString();
 				}
 			}
