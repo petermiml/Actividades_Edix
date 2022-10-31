@@ -109,6 +109,8 @@ public class SocketCliente {
 					break;
 					
 				case "5":
+					datos="Cerrada la conexion con el usuario: ";
+					salida.println(opcion+"-"+ datos);
 					continuar = false;
 					System.out.println("Fin de conexion");
 					break;
