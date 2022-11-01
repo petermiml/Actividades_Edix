@@ -63,16 +63,17 @@ public class Biblioteca{
 				return ("El titulo no existe");		
 		}
 		
-		
 		public String buscarLibroAutor (String autor) {
 			String listaLibros = "";
-			
-			for(Libro l:libros) {
-				if (l.getAutor().equalsIgnoreCase(autor)) {
-					listaLibros += "-" + l.toString();
-				}
+			String mensaje ="";
+			String autorErroneo ="El autor no existe";
+			mensaje = autorErroneo;
+		for(Libro l:libros) {
+			if (l.getAutor().equalsIgnoreCase(autor)) {
+				listaLibros += "-" + l.toString();
+				mensaje = listaLibros;
 			}
-			
-			return listaLibros;
+			}
+				return mensaje;
 		}
 }
