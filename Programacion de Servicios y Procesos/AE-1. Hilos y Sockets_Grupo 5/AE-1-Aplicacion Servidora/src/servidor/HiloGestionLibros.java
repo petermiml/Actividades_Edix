@@ -22,12 +22,6 @@ public class HiloGestionLibros extends Thread {
 		usuario++;
 	}
 	
-	// Método para añadir un libro a la biblioteca.
-	public synchronized void addLibro(String isbn, String titulo, String autor, String precio) {
-		Libro nlibro = new Libro(isbn, titulo, autor, precio);	// Se crea un objeto Libro con los datos pasados por parametro.
-		biblioteca.addLibro(nlibro);							// se usa el metodo addLibro de la biblioteca.
-	}
-
 	// Creamos el método run(), que será lo que se ejecute al entrar en el hilo.
 	
 	@Override
@@ -87,7 +81,7 @@ public class HiloGestionLibros extends Thread {
 						String precio = opcionDatos[4];
 						
 						// Añade el libro a la biblioteca
-						addLibro(isbn, titulo, autor, precio);	
+						biblioteca.addLibro(isbn, titulo, autor, precio);	
 	
 						// Devolvemos cadena "[TITULO_LIBRO_AÑADIDO] añadido a la biblioteca"
 						salida.println("El libro: \""+ titulo + "\" se ha añadido a la biblioteca.");	

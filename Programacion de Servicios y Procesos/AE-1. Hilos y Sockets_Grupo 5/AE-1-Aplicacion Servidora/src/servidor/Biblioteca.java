@@ -38,9 +38,11 @@ public class Biblioteca{
 		// Métodos especificados en el ejercicio:
 		
 		// Como el ejercicio indicaba, solo un usuario puede añadir un libro a la vez, por lo que hicimos que el metodo para ello fuera sincronizado.
-		// A este metodo se le pasa un objeto Libro por parametro y se añade al arrayList.
-		public synchronized void addLibro(Libro libro) {
-			 libros.add(libro);	  
+		// A este metodo se le pasan los datos necesarios para la creacion de un objeto de tipo Libro.
+		
+		public synchronized void addLibro(String isbn, String titulo, String autor, String precio) {
+			Libro nLibro = new Libro(isbn, titulo, autor, precio);	// Se crea un objeto Libro con los datos pasados por parametro.
+			this.libros.add(nLibro);								// se usa el metodo add del ArrayList libros.
 		}
 		
 		// Recorremos el ArrayList, y de no estar el isbn, devolverá una cadena indicándolo, de lo contrario, devolverá el toString del libro con dicho ISBN.
