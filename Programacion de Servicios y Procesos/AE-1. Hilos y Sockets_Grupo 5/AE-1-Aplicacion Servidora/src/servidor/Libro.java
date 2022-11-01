@@ -1,9 +1,12 @@
 package servidor;
 
 public class Libro {
-
-	private String isbn, titulo,autor, precio;
 	
+	// Declaramos las propiedades de la clase
+
+	private String isbn, titulo, autor, precio;
+	
+	// Constructor de la clase
 	public Libro(String isbn, String titulo, String autor, String precio) {
 		super();
 		this.isbn = isbn;
@@ -12,6 +15,7 @@ public class Libro {
 		this.precio = precio;
 	}
 	
+	// Getters y Setters
 	public String getIsbn() {
 		return isbn;
 	}
@@ -37,9 +41,10 @@ public class Libro {
 		this.precio = precio;
 	}
 
+	// Método toString()
 	@Override
 	public String toString() {
-		return "Libro [isbn=" + isbn + ", titulo=" + titulo + ", autor=" + autor + ", precio=" + precio + "]";
+		return "Libro -> || ISBN: " + isbn + " || Titulo: " + titulo + " || Autor: " + autor + " || Precio: " + precio + " ||";
 	}
 	
 	
