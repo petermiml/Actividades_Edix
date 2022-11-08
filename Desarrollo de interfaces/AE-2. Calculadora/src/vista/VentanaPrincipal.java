@@ -11,6 +11,54 @@ import controlador.ManejadorEventos;
 
 public class VentanaPrincipal extends JFrame{
 	
+	public JButton getSumar() {
+		return sumar;
+	}
+
+	public JButton getRestar() {
+		return restar;
+	}
+
+	public JButton getMultiplicar() {
+		return multiplicar;
+	}
+
+	public JButton getDividir() {
+		return dividir;
+	}
+
+	public JButton getRaiz2() {
+		return raiz2;
+	}
+
+	public JButton getRaiz3() {
+		return raiz3;
+	}
+
+	public JLabel getEtiquetaNum1() {
+		return etiquetaNum1;
+	}
+
+	public JLabel getEtiquetaNum2() {
+		return etiquetaNum2;
+	}
+
+	public JLabel getEtiquetaResultado() {
+		return etiquetaResultado;
+	}
+
+	public JLabel getResultado() {
+		return resultado;
+	}
+
+	public JTextField getNum1() {
+		return num1;
+	}
+
+	public JTextField getNum2() {
+		return num2;
+	}
+
 	JButton sumar, restar, multiplicar, dividir, raiz2, raiz3;
 	JLabel etiquetaNum1, etiquetaNum2, etiquetaResultado, resultado;
 	JTextField num1, num2;
@@ -52,27 +100,33 @@ public class VentanaPrincipal extends JFrame{
 		// ================== BOTONES =======================
 		
 		sumar = new JButton("Sumar");			
-		sumar.setBounds(40, 160, 95, 40);		
+		sumar.setBounds(40, 160, 95, 40);	
+		sumar.addActionListener(new ManejadorEventos(this));
 		add(sumar);	
 		
 		restar = new JButton("Restar");			
-		restar.setBounds(145, 160, 95, 40);		
+		restar.setBounds(145, 160, 95, 40);	
+		restar.addActionListener(new ManejadorEventos(this));
 		add(restar);
 		
 		multiplicar = new JButton("Multiplicar");			
-		multiplicar.setBounds(40, 210, 95, 40);		
+		multiplicar.setBounds(40, 210, 95, 40);	
+		multiplicar.addActionListener(new ManejadorEventos(this));
 		add(multiplicar);
 		
 		dividir = new JButton("Dividir");			
-		dividir.setBounds(145, 210, 95, 40);		
+		dividir.setBounds(145, 210, 95, 40);
+		dividir.addActionListener(new ManejadorEventos(this));
 		add(dividir);
 		
 		raiz2 = new JButton("Raiz 2");			
-		raiz2.setBounds(40, 260, 95, 40);		
+		raiz2.setBounds(40, 260, 95, 40);	
+		raiz2.addActionListener(new ManejadorEventos(this));
 		add(raiz2);
 		
 		raiz3 = new JButton("Raiz 3");			
-		raiz3.setBounds(145, 260, 95, 40);		
+		raiz3.setBounds(145, 260, 95, 40);	
+		raiz3.addActionListener(new ManejadorEventos(this));
 		add(raiz3);
 		
 		// ====================================================
