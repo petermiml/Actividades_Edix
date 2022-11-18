@@ -52,7 +52,8 @@ public class ControladorVideojuego {
 	 * Pasamos el videojuego que queramos crear sin el ID.
 	 */
 	
-	@PostMapping(path="videojuegos",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(path="videojuegos",consumes=MediaType.
+			APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
 	
 	public ResponseEntity<VideoJuego> altaVideoJuego (@RequestBody VideoJuego v){
 		System.out.println("Videojuego dado de alta : " + v);
