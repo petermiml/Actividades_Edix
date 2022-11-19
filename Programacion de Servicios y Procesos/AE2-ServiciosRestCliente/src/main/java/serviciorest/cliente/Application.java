@@ -121,7 +121,7 @@ public class Application implements CommandLineRunner{
 					case "3":
 						// En primer lugar solicitamos los datos al usuario y lo guardamos en las respectivas variables:
 						System.out.println("Por favor, escribe el id del videojuego a modificar: ");
-					    id = sc.nextInt();
+					    id = sc.nextInt();sc.nextLine();
 	
 						System.out.println("Por favor, escribe el nombre del videojuego a modificar: ");
 					    nombre = sc.nextLine();
