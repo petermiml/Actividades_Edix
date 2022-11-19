@@ -23,22 +23,17 @@ public class Application implements CommandLineRunner{
 	@Autowired
 	private ServicioProxyVideoJuego spv;
 
-	
 	//Tambien necesitaremos acceder al contexto de Spring para parar
 	//la aplicacion, ya que esta app al ser una aplicacion web se
 	//lanzará en un tomcat. De esta manera le decimos a Spring que
 	//nos inyecte su propio contexto.
 	@Autowired
 	private ApplicationContext context;
+	
+	//Metodo para parar la aplicacion
 	public void pararAplicacion() {
-		//Esta aplicacion levanta un servidor web, por lo que tenemos que darle 
-		//la orden de pararlo cuando acabemos. Para ello usamos el metodo exit, 
-		//de la clase SpringApplication, que necesita el contexto de Spring y 
-		//un objeto que implemente la interfaz ExitCodeGenerator. 
-		//Podemos usar la funcion lambda "() -> 0" para simplificar 
-		
-		SpringApplication.exit(context, () -> 0);
-		
+
+		SpringApplication.exit(context, () -> 0);	
 	}
 	
 	//En este metodo daremos de alta un objeto de tipo RestTemplate que sera
@@ -111,8 +106,10 @@ public class Application implements CommandLineRunner{
 						break;    
 
 					case "2":
+						// En primer lugar solicitamos el id del objeto que queremos borrar y lo guardamos en una variable:
 						System.out.println("Por favor, escribe el id del videojuego a borrar: ");
 					    int id = sc.nextInt();
+					    //Borramos el objeto seleccionado
 						boolean borrado = spv.borrar(id);
 						System.out.println("run -> Videojuego con el id: " +id+" está borrado?"+ borrado+"\n");
 						
@@ -120,10 +117,10 @@ public class Application implements CommandLineRunner{
 							    
 					case "3":
 						// En primer lugar solicitamos los datos al usuario y lo guardamos en las respectivas variables:
-						System.out.println("Por favor, escribe el id del videojuego a modificar: ");
+					    System.out.println("Por favor, escribe el id del videojuego a modificar: ");
 					    id = sc.nextInt();sc.nextLine();
 	
-						System.out.println("Por favor, escribe el nombre del videojuego a modificar: ");
+					    System.out.println("Por favor, escribe el nombre del videojuego a modificar: ");
 					    nombre = sc.nextLine();
 					 	
 					    System.out.println("Por favor, escribe el nombre de la compañia a modificar: ");
@@ -132,6 +129,8 @@ public class Application implements CommandLineRunner{
 					    System.out.println("Por favor, escribe la nota del videojuego a modificar: ");
 					    nota = sc.nextInt();
 					    
+					    
+					    //Con las variables recogidas nos disponemos a modificar el objeto co sus setters 
 						VideoJuego vModificar = new VideoJuego();
 						vModificar.setId(id);
 						vModificar.setNombre(nombre);
@@ -142,9 +141,11 @@ public class Application implements CommandLineRunner{
 					    break;
 							    
 					case "4":
-						// En primer lugar solicitamos los datos al usuario y lo guardamos en las respectivas variables:
+						// En primer lugar solicitamos al usuario el id del objeto que quermos mostrar
+						//Lo guardamos en una variable
 						System.out.println("Por favor, escribe el id del videojuego a ver: ");
 					    id = sc.nextInt();
+					    //Usamos el id para mostrar el objeto con el metodo obtener del ServicioProxyVideoJuego
 						videoJuego = spv.obtener(id);
 						System.out.println("run -> Videojuego con id 20: " + videoJuego+"\n");	
 						break;
