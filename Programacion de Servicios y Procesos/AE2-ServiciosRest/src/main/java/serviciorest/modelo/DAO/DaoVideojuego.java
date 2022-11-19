@@ -47,19 +47,19 @@ public DaoVideojuego() {
 
 public void addGame(VideoJuego v) {
 	
-	for(VideoJuego g : listaVideojuegos) {
+	/*for(VideoJuego g : listaVideojuegos) {
 		
 		if(g.getNombre().equalsIgnoreCase(v.getNombre())) {
 		
 			System.out.println("Este videojuego ya existe");			
 						
-		} else {
+		} else {*/
 			
 			v.setId(contador++);
 			listaVideojuegos.add(v);
 			
-		}
-	}	
+		//}
+	//}	
 }
 
  // Método para dar de baja un videjuego por ID. Sabemos que el id es igual a la posicion en el array,

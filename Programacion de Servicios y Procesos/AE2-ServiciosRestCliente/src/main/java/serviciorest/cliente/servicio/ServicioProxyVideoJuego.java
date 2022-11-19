@@ -40,9 +40,6 @@ public class ServicioProxyVideoJuego {
 	 */
 	public VideoJuego obtener(int id){
 		try {
-			//Como el servicio trabaja con objetos ResponseEntity, nosotros 
-			//tambien podemos hacerlo en el cliente
-			//Ej http://localhost:8090/videoJuego/1 GET
 			ResponseEntity<VideoJuego> vi = restTemplate.getForEntity(URL + id, VideoJuego.class);
 			HttpStatus hs= vi.getStatusCode();
 			if(hs == HttpStatus.OK) {	
@@ -60,7 +57,6 @@ public class ServicioProxyVideoJuego {
 		    return null;
 		}
 	}
-	
 	/**
 	 * Metodo que da de alta una VideoJuego en el servicio REST
 	 * 
@@ -83,9 +79,7 @@ public class ServicioProxyVideoJuego {
 		    return null;
 		}
 	}
-	
 	/**
-	 * 
 	 * Modifica un videojuego en el servicio REST
 	 * 
 	 * @param v el videojuego que queremos modificar, se hara a partir del 
@@ -95,9 +89,6 @@ public class ServicioProxyVideoJuego {
 	 */
 	public boolean modificar(VideoJuego v){
 		try {
-			//El metodo put de Spring no devuelve nada
-			//si no da error se ha dado de alta y si no daria una 
-			//excepcion
 			restTemplate.put(URL + v.getId(), v, VideoJuego.class);
 			return true;
 		} catch (HttpClientErrorException e) {
@@ -106,9 +97,7 @@ public class ServicioProxyVideoJuego {
 		    return false;
 		}
 	}
-	
 	/**
-	 * 
 	 * Borra un videojuego en el servicio REST
 	 * 
 	 * @param id el id del videojuego que queremos borrar.
@@ -117,8 +106,6 @@ public class ServicioProxyVideoJuego {
 	 */
 	public boolean borrar(int id){
 		try {
-			//El metodo delete tampoco devuelve nada, por lo que si no 
-			//ha podido borrar el id, daría un excepcion
 			restTemplate.delete(URL + id);
 			return true;
 		} catch (HttpClientErrorException e) {
@@ -127,22 +114,14 @@ public class ServicioProxyVideoJuego {
 		    return false;
 		}
 	}
-	
 	/**
-	 * Metodo que devuelve todas los videojuegos o todos los videojuegos filtrados
-	 * por nombre del web service
-	 * 
-	 * @param nombre en caso de ser distinto de null, devolvera el listado
-	 * filtrado por el nombre que le hayamos pasado en este parametro. En caso
-	 * de que sea null, el listado de los videojuegos sera completo
-	 * @return el listado de los videojuegos segun el parametro de entrada o 
-	 * null en caso de algun error con el servicio REST
+	 * Metodo que devuelve todas los videojuegos
+	 * @return el listado de los videojuegos o null en caso de algun error con el servicio REST
 	 */
 	public List<VideoJuego> listar(){
 
 		
 		try {
-			//Ej http://localhost:8090/VideoJuegos?nombre=Call of dutty GET
 			ResponseEntity<VideoJuego[]> response =
 					  restTemplate.getForEntity(URL ,VideoJuego[].class);
 			VideoJuego[] arrayVideoJuegos = response.getBody();
