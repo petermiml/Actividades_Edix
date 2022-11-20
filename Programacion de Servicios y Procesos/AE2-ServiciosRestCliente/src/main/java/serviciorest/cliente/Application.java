@@ -69,6 +69,7 @@ public class Application implements CommandLineRunner{
 		// Creamos variables necesarias para el codigo.
 					String opcion = "";
 					boolean continuar = true;
+					int nota=0;
 		try(Scanner sc = new Scanner(System.in)){
 			do {
 					System.out.println("Elige el numero de la opcion que desea:\n");
@@ -94,12 +95,12 @@ public class Application implements CommandLineRunner{
 					    String compañia = sc.nextLine();
 	
 					    System.out.println("Por favor, escribe la nota del videojuego a introducir: ");
-					    int nota = sc.nextInt();
+					    nota = sc.nextInt();sc.nextLine();
 						//Creamos un objeto y le introducimos los datos recogidos por el cliente.
 						VideoJuego videoJuego = new VideoJuego();
 						videoJuego.setNombre(nombre);
 						videoJuego.setCompañia(compañia);
-						videoJuego.setNota(10);
+						videoJuego.setNota(nota);
 						//Le damos de alta 
 						VideoJuego vAlta = spv.alta(videoJuego);
 						System.out.println("run -> Videojuego dado de alta " + vAlta+"\n");
@@ -108,7 +109,7 @@ public class Application implements CommandLineRunner{
 					case "2":
 						// En primer lugar solicitamos el id del objeto que queremos borrar y lo guardamos en una variable:
 						System.out.println("Por favor, escribe el id del videojuego a borrar: ");
-					    int id = sc.nextInt();
+					    int id = sc.nextInt();sc.nextLine();
 					    //Borramos el objeto seleccionado
 						boolean borrado = spv.borrar(id);
 						System.out.println("run -> Videojuego con el id: " +id+" está borrado?"+ borrado+"\n");
@@ -127,7 +128,7 @@ public class Application implements CommandLineRunner{
 					    compañia = sc.nextLine();
 	
 					    System.out.println("Por favor, escribe la nota del videojuego a modificar: ");
-					    nota = sc.nextInt();
+					    nota = sc.nextInt();sc.nextLine();
 					    
 					    
 					    //Con las variables recogidas nos disponemos a modificar el objeto co sus setters 
@@ -144,7 +145,7 @@ public class Application implements CommandLineRunner{
 						// En primer lugar solicitamos al usuario el id del objeto que quermos mostrar
 						//Lo guardamos en una variable
 						System.out.println("Por favor, escribe el id del videojuego a ver: ");
-					    id = sc.nextInt();
+					    id = sc.nextInt();sc.nextLine();
 					    //Usamos el id para mostrar el objeto con el metodo obtener del ServicioProxyVideoJuego
 						videoJuego = spv.obtener(id);
 						System.out.println("run -> Videojuego con id 20: " + videoJuego+"\n");	
@@ -163,9 +164,13 @@ public class Application implements CommandLineRunner{
 			   		   pararAplicacion();
 			   		   continuar=false;
 			    	    break;
+			    	 // En caso de escoger una opcion incorrecta, se indicar� al usuario.
+					default:
+						System.out.println("Opcion incorrecta.");
+						break;
 				}}while(continuar);
 
-
+                sc.close();
 					
 			//Recogemos las excepciones con los 'catch'	
 			}catch (Exception e) {
