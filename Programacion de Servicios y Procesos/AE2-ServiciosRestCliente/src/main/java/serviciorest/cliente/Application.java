@@ -99,7 +99,7 @@ public class Application implements CommandLineRunner{
 						VideoJuego videoJuego = new VideoJuego();
 						videoJuego.setNombre(nombre);
 						videoJuego.setCompañia(compañia);
-						videoJuego.setNota(10);
+						videoJuego.setNota(nota);
 						//Le damos de alta 
 						VideoJuego vAlta = spv.alta(videoJuego);
 						System.out.println("run -> Videojuego dado de alta " + vAlta+"\n");
