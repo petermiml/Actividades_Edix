@@ -92,7 +92,7 @@ public class ControladorVideojuego {
 	 * Vamos a recibir el ID por el PATH, y los datos los modificaremos por JSON dentro del body de http.
 	 * 
 	 * La URL para acceder a esta modificación será:
-	 * "http://localhost:8090/videojuegos/ID" y el método será PUT pasandole la persona nueva, sin el ID.
+	 * "http://localhost:8090/videojuegos/ID" y el método será PUT pasandole el videojuego nuevo, sin el ID.
 	 */
 	@PutMapping(path="videojuegos/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
 	
