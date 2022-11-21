@@ -166,7 +166,7 @@ public class Application implements CommandLineRunner{
 			    	    break;
 			    	 // En caso de escoger una opcion incorrecta, se indicar� al usuario.
 					default:
-						System.out.println("Opcion incorrecta.");
+						System.out.println("Opcion incorrecta.\n");
 						break;
 				}}while(continuar);
 
