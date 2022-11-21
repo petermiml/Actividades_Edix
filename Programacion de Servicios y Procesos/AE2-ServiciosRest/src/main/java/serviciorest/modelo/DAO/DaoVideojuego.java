@@ -46,18 +46,9 @@ public DaoVideojuego() {
 // Método para dar de alta un videojuego en la lista. V es el videojuego que queremos añadir.
 
 public  void addGame(VideoJuego v) {
-	try {
-	    for(VideoJuego g : listaVideojuegos) {
-	    
-		  if(g.getNombre()!=(v.getNombre())) {
-	   	
-			v.setId(contador++);
-			listaVideojuegos.add(v);
-			}}
-		}catch (IndexOutOfBoundsException ee){
-			System.out.println("El juego ya existe");
-			
-		}	
+
+				v.setId(contador++);
+				listaVideojuegos.add(v);
 }
 
  // Método para dar de baja un videjuego por ID. Sabemos que el id es igual a la posicion en el array,
