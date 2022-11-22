@@ -131,7 +131,7 @@ public class VentanaPrincipal extends JFrame{
 		
 		// ====================================================
 		
-		// ================= ETIQUETA Y TEXTFIELD DEL RESULTADO ======================
+		// ================= ETIQUETAS DEL RESULTADO ======================
 		
 		etiquetaResultado = new JLabel("Resultado: "); 		
 		etiquetaResultado.setBounds(40,330,80,30);		

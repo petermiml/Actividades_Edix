@@ -59,6 +59,9 @@ public class ManejadorEventos implements ActionListener{
 		}else if(e.getSource() == vp.getDividir()) {
 			String resultado = String.valueOf(division(num1,num2));
 			vp.getResultado().setText(resultado);
+		
+		}else if(e.getSource() == vp.getRaiz3()) {
+			// AQUÍ VENDRÍA EL EVENTO DEL BOTON DE LA RAIZ CUBICA
 			
 		}else if(e.getSource() == vp.getRaiz2()) {
 			JOptionPane.showMessageDialog(null,"Funcionalidad no disponible", "Error", JOptionPane.INFORMATION_MESSAGE);	
