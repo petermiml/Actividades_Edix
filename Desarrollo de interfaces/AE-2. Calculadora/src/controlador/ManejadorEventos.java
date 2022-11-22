@@ -40,6 +40,7 @@ public class ManejadorEventos implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+	 try {
 		double num1 = Double.valueOf(vp.getNum1().getText());
 		double num2 = Double.valueOf(vp.getNum2().getText());
 		
@@ -66,9 +67,10 @@ public class ManejadorEventos implements ActionListener{
 		}else if(e.getSource() == vp.getRaiz2()) {
 			JOptionPane.showMessageDialog(null,"Funcionalidad no disponible", "Error", JOptionPane.INFORMATION_MESSAGE);	
 		}
-			
-		
-		
+		//Aquí recogemos la excepción si el usuario introduce caracteres  que no sean números incluido campo vacío.
+		}catch(NumberFormatException e1){	
+			JOptionPane.showMessageDialog(null,"Dato introducido no válido o el campo está vacío", "Error", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 }
