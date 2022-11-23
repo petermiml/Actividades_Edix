@@ -2,7 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
@@ -10,7 +9,7 @@ import vista.VentanaPrincipal;
 
 public class ManejadorEventos implements ActionListener{
 
-	DecimalFormat df = new DecimalFormat("#.##");
+	
 	VentanaPrincipal vp;
 	
 	public ManejadorEventos(VentanaPrincipal vp) {
@@ -58,8 +57,9 @@ public class ManejadorEventos implements ActionListener{
 					String resultadoFinal = String.valueOf(suma(num1,num2));
 					vp.getResultado().setText(resultadoFinal);
 				}
-			// Realizamos el mismo procedimiento para el resto de operaciones, con la salvedad de que en la resta y la división
-			// formateamos a dos decimales como máximo.
+			// 	Realizamos el mismo procedimiento para el resto de operaciones, con la salvedad de que en la resta y la división
+			// 	redondeamos con dos decimales como máximo ya que, como te comenté, a veces el error tiene una imprecisión milimétrica y 
+			//	esto es lo que nos recomendaste.
 			}else if(e.getSource() == vp.getRestar()){
 				double resultado = resta(num1,num2);
 				if(resultado%1 == 0) {										
@@ -67,7 +67,7 @@ public class ManejadorEventos implements ActionListener{
 					String resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
-					String resultadoFinal = String.valueOf(df.format(resta(num1,num2)));
+					String resultadoFinal = String.valueOf(Math.round(resta(num1,num2)*100d)/100d);	
 					vp.getResultado().setText(resultadoFinal);
 					
 				}
@@ -86,13 +86,15 @@ public class ManejadorEventos implements ActionListener{
 				
 			}else if(e.getSource() == vp.getDividir()) {
 				double resultado = division(num1,num2);							
-
-				if(resultado%1 == 0) {										
+				
+				if(num2 == 0) {
+					vp.getResultado().setText("No se puede dividir\n entre 0");
+				}else if(resultado%1 == 0) {										
 					int resultadoInt = (int) resultado;
 					String resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
-					String resultadoFinal = String.valueOf(df.format(division(num1,num2)));
+					String resultadoFinal = String.valueOf(Math.round(division(num1,num2)*100d)/100d);	
 					vp.getResultado().setText(resultadoFinal);
 				}
 			
