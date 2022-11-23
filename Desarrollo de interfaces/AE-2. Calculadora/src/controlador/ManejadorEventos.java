@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
@@ -9,6 +10,7 @@ import vista.VentanaPrincipal;
 
 public class ManejadorEventos implements ActionListener{
 
+	DecimalFormat df = new DecimalFormat("#.##");
 	VentanaPrincipal vp;
 	
 	public ManejadorEventos(VentanaPrincipal vp) {
@@ -40,36 +42,69 @@ public class ManejadorEventos implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	 try {
-		double num1 = Double.valueOf(vp.getNum1().getText());
-		double num2 = Double.valueOf(vp.getNum2().getText());
-		
-		if(e.getSource() == vp.getSumar()) {
-			String resultado = String.valueOf(suma(num1,num2));
-			vp.getResultado().setText(resultado);
-			System.out.println(e.getSource());
+		try {
+			double num1 = Double.valueOf(vp.getNum1().getText());
+			double num2 = Double.valueOf(vp.getNum2().getText());
 			
-		}else if(e.getSource() == vp.getRestar()){
-			String resultado = String.valueOf(resta(num1,num2));
-			vp.getResultado().setText(resultado); 
+			if(e.getSource() == vp.getSumar()) {
+				// Realizamos la operación.
+				double resultado = suma(num1,num2);							
+				// Si el resultado obtenido entre 1 da como resto 0, hacemos un cast e imprimimos el número como un entero, si no, como decimal.
+				if(resultado%1 == 0) {										
+					int resultadoInt = (int) resultado;
+					String resultadoFinal = String.valueOf(resultadoInt);
+					vp.getResultado().setText(resultadoFinal);
+				}else {
+					String resultadoFinal = String.valueOf(suma(num1,num2));
+					vp.getResultado().setText(resultadoFinal);
+				}
+			// Realizamos el mismo procedimiento para el resto de operaciones, con la salvedad de que en la resta y la división
+			// formateamos a dos decimales como máximo.
+			}else if(e.getSource() == vp.getRestar()){
+				double resultado = resta(num1,num2);
+				if(resultado%1 == 0) {										
+					int resultadoInt = (int) resultado;
+					String resultadoFinal = String.valueOf(resultadoInt);
+					vp.getResultado().setText(resultadoFinal);
+				}else {
+					String resultadoFinal = String.valueOf(df.format(resta(num1,num2)));
+					vp.getResultado().setText(resultadoFinal);
+					
+				}
+				
+			}else if(e.getSource() == vp.getMultiplicar()) {
+				double resultado = multiplicacion(num1,num2);							
+
+				if(resultado%1 == 0) {										
+					int resultadoInt = (int) resultado;
+					String resultadoFinal = String.valueOf(resultadoInt);
+					vp.getResultado().setText(resultadoFinal);
+				}else {
+					String resultadoFinal = String.valueOf(multiplicacion(num1,num2));
+					vp.getResultado().setText(resultadoFinal);
+				}
+				
+			}else if(e.getSource() == vp.getDividir()) {
+				double resultado = division(num1,num2);							
+
+				if(resultado%1 == 0) {										
+					int resultadoInt = (int) resultado;
+					String resultadoFinal = String.valueOf(resultadoInt);
+					vp.getResultado().setText(resultadoFinal);
+				}else {
+					String resultadoFinal = String.valueOf(df.format(division(num1,num2)));
+					vp.getResultado().setText(resultadoFinal);
+				}
 			
-		}else if(e.getSource() == vp.getMultiplicar()) {
-			String resultado = String.valueOf(multiplicacion(num1,num2));
-			vp.getResultado().setText(resultado);
-			
-		}else if(e.getSource() == vp.getDividir()) {
-			String resultado = String.valueOf(division(num1,num2));
-			vp.getResultado().setText(resultado);
-		
-		}else if(e.getSource() == vp.getRaiz3()) {
-			// AQUÍ VENDRÍA EL EVENTO DEL BOTON DE LA RAIZ CUBICA
-			
-		}else if(e.getSource() == vp.getRaiz2()) {
-			JOptionPane.showMessageDialog(null,"Funcionalidad no disponible", "Error", JOptionPane.INFORMATION_MESSAGE);	
+			}else if(e.getSource() == vp.getRaiz3()) {
+				// AQUÍ VENDRÍA EL EVENTO DEL BOTON DE LA RAIZ CUBICA
+				
+			}else if(e.getSource() == vp.getRaiz2()) {
+				JOptionPane.showMessageDialog(null,"Funcionalidad no disponible", "Error", JOptionPane.INFORMATION_MESSAGE);	
 		}
 		//Aquí recogemos la excepción de si el usuario introduce caracteres  que no sean números incluido campo vacío.
 		}catch(NumberFormatException e1){	
-			JOptionPane.showMessageDialog(null,"Dato introducido no válido o el campo está vacío", "Error", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"                      Dato introducido no válido o el campo está vacío.\n\nPara introducir decimales, recuerda utilizar el punto (.) en lugar de la coma (,).", "Error", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
