@@ -175,7 +175,7 @@ public class VentanaPrincipal extends JFrame{
 		add(etiquetaResultado);
 		
 		resultado = new JLabel("");
-		resultado.setBounds(170,380,80,30);
+		resultado.setBounds(158,380,180,30);
 		add(resultado);
 		
 		// ===========================================================================
