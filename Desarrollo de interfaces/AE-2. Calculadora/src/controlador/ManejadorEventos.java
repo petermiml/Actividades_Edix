@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
@@ -9,6 +10,7 @@ import vista.VentanaPrincipal;
 
 public class ManejadorEventos implements ActionListener{
 
+	DecimalFormat df = new DecimalFormat("#.##");
 	VentanaPrincipal vp;
 	
 	public ManejadorEventos(VentanaPrincipal vp) {
@@ -56,17 +58,18 @@ public class ManejadorEventos implements ActionListener{
 					String resultadoFinal = String.valueOf(suma(num1,num2));
 					vp.getResultado().setText(resultadoFinal);
 				}
-				
+			// Realizamos el mismo procedimiento para el resto de operaciones, con la salvedad de que en la resta y la división
+			// formateamos a dos decimales como máximo.
 			}else if(e.getSource() == vp.getRestar()){
-				double resultado = resta(num1,num2);							
-				System.out.println(resta(3,3.1));
+				double resultado = resta(num1,num2);
 				if(resultado%1 == 0) {										
 					int resultadoInt = (int) resultado;
 					String resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
-					String resultadoFinal = String.valueOf(resta(num1,num2));
+					String resultadoFinal = String.valueOf(df.format(resta(num1,num2)));
 					vp.getResultado().setText(resultadoFinal);
+					
 				}
 				
 			}else if(e.getSource() == vp.getMultiplicar()) {
@@ -89,7 +92,7 @@ public class ManejadorEventos implements ActionListener{
 					String resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
-					String resultadoFinal = String.valueOf(division(num1,num2));
+					String resultadoFinal = String.valueOf(df.format(division(num1,num2)));
 					vp.getResultado().setText(resultadoFinal);
 				}
 			
@@ -101,7 +104,7 @@ public class ManejadorEventos implements ActionListener{
 		}
 		//Aquí recogemos la excepción de si el usuario introduce caracteres  que no sean números incluido campo vacío.
 		}catch(NumberFormatException e1){	
-			JOptionPane.showMessageDialog(null,"Dato introducido no válido o el campo está vacío", "Error", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"                      Dato introducido no válido o el campo está vacío.\n\nPara introducir decimales, recuerda utilizar el punto (.) en lugar de la coma (,).", "Error", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
