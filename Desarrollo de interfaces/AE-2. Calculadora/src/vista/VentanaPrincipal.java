@@ -14,6 +14,12 @@ import controlador.ManejadorEventos;
 
 public class VentanaPrincipal extends JFrame{
 	
+	JButton sumar, restar, multiplicar, dividir, raiz2, raiz3;
+	JLabel etiquetaNum1, etiquetaNum2, etiquetaResultado, resultado, logo;
+	JTextField num1, num2;
+	
+	
+	
 	public JButton getSumar() {
 		return sumar;
 	}
@@ -62,9 +68,7 @@ public class VentanaPrincipal extends JFrame{
 		return num2;
 	}
 
-	JButton sumar, restar, multiplicar, dividir, raiz2, raiz3;
-	JLabel etiquetaNum1, etiquetaNum2, etiquetaResultado, resultado, logo;
-	JTextField num1, num2;
+	
 	
 	public VentanaPrincipal() {
 		setSize(380,490);		
