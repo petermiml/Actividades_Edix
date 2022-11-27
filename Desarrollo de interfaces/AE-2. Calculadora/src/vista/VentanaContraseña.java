@@ -33,7 +33,7 @@ public class VentanaContraseña extends JDialog {
 	}
 
 	/**
-	 * Create the dialog.
+	 * En el constructor añadimos el objeto VentanaPrincipal asi no se podrá hacer nada hasta que cierres la VentanaContaseña.
 	 */
 	public VentanaContraseña(VentanaPrincipal ventanaPrinvipal, boolean permiso) {
 		super(ventanaPrinvipal,permiso);
@@ -48,14 +48,12 @@ public class VentanaContraseña extends JDialog {
 
 	private void inicializarComponentes() {
 		
-		
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(cajaContenedora2, BorderLayout.CENTER);
 		cajaContenedora2.setForeground(new Color(0, 102, 51));
 		cajaContenedora2.setBackground(new Color(0, 204, 102));
 		cajaContenedora2.setBorder(null);
 		cajaContenedora2.setLayout(null);
-		
 		
 		
 		etiqContrErroñea = new JLabel("");
@@ -65,12 +63,14 @@ public class VentanaContraseña extends JDialog {
 		etiqContrErroñea.setBounds(157, 74, 181, 28);
 		cajaContenedora2.add(etiqContrErroñea);
 		
+		
 		etiquetaContraseña = new JLabel("Contraseña");
 		etiquetaContraseña.setIcon(null);
 		etiquetaContraseña.setForeground(new Color(255, 255, 255));
 		etiquetaContraseña.setFont(new Font("Century", Font.BOLD, 18));
 		etiquetaContraseña.setBounds(30, 38, 110, 42);
 		cajaContenedora2.add(etiquetaContraseña);
+		
 		
 		etiquetaImagen = new JLabel("");
 		etiquetaImagen.setIcon(new ImageIcon("Imagenes/key.png"));
@@ -83,12 +83,14 @@ public class VentanaContraseña extends JDialog {
 		botonOK = new JButton("OK");
 		botonOK.setBackground(new Color(233, 233, 233));
 		botonOK.addActionListener(new ActionListener() {
+		/*
+		 * En el método de acción del botón ok, añadimos que compare la contraseña almacenada con la introducida en la caja de texto. 
+		 * Si son iguales cambiamos la variable confirm= false para que el ManejadorEventos nos permita hacer la operación de raíz cúbica.
+		 * También cerramos la ventana con el método dispose(); 
+		 */
 			public void actionPerformed(ActionEvent e) {
-				
 				if(getCajaDeTexto().equals(contraseña)) {
-			
 					confirm = false;
-					
 					dispose();
 				}else {	
 					etiqContrErroñea.setText("'Contraseña inválida'");	
@@ -101,11 +103,9 @@ public class VentanaContraseña extends JDialog {
 	    botonCancel = new JButton("Cancel");
 		botonCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				dispose();
 			}
 		});
-		
 		botonCancel.setBackground(new Color(233, 233, 233));
 		botonCancel.setBounds(348, 106, 89, 23);		
 		cajaContenedora2.add(botonCancel);
