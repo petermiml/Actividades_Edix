@@ -84,7 +84,7 @@ public class VentanaContraseña extends JDialog {
 		cajaContenedora2.add(etiquetaContraseña);
 		
 		etiquetaImagen = new JLabel("");
-		etiquetaImagen.setIcon(new ImageIcon("C:\\Users\\user\\Downloads\\key.png"));
+		etiquetaImagen.setIcon(new ImageIcon("Imagenes/key.png"));
 		etiquetaImagen.setFont(new Font("Century", Font.PLAIN, 16));
 		etiquetaImagen.setForeground(new Color(255, 255, 255));
 		etiquetaImagen.setBounds(348, 48, 39, 24);
