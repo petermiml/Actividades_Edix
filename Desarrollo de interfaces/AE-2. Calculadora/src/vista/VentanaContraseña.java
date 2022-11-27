@@ -80,7 +80,7 @@ public class VentanaContraseña extends JDialog {
 		etiquetaContraseña.setIcon(null);
 		etiquetaContraseña.setForeground(new Color(255, 255, 255));
 		etiquetaContraseña.setFont(new Font("Century", Font.BOLD, 18));
-		etiquetaContraseña.setBounds(45, 38, 102, 42);
+		etiquetaContraseña.setBounds(30, 38, 110, 42);
 		cajaContenedora2.add(etiquetaContraseña);
 		
 		etiquetaImagen = new JLabel("");
