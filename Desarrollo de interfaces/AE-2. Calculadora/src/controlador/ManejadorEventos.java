@@ -116,23 +116,32 @@ public class ManejadorEventos implements ActionListener{
 			
 			}else if(e.getSource() == vp.getRaiz3()) {
 				
-				num1 = Double.valueOf(vp.getNum1().getText());
-				
-				VentanaContraseña ventana2 = new VentanaContraseña(vp,true);
-				if(ventana2.getConfirm()==true){
-				    ventana2.setVisible(true);   
-				}
-				   						
-				if(num1 != 0 ) {
-					resultado = raiz3(num1);
-					resultadoInt = (int) resultado;
-					resultadoFinal = String.valueOf(resultadoInt);
-					vp.getResultado().setText(resultadoFinal); 
+				if (!vp.getNum1().getText().equals("") && !vp.getNum2().getText().equals("")) {
+					JOptionPane.showMessageDialog(null,"No es posible calcular la raiz cúbica de dos números. Por favor, introduce el número en el primer campo.", "Error", JOptionPane.INFORMATION_MESSAGE);
+				}else if(!vp.getNum2().getText().equals("")){
+					JOptionPane.showMessageDialog(null,"Por favor, introduce el número en el primer campo.", "Error", JOptionPane.INFORMATION_MESSAGE);
+				}else {
+					num1 = Double.valueOf(vp.getNum1().getText());
 					
-				}else if(resultado%1 == 0) {										
-					JOptionPane.showMessageDialog(null,"No es posible calcular la raiz cúbica de dos números", "Error", JOptionPane.INFORMATION_MESSAGE);
+					VentanaContraseña ventana2 = new VentanaContraseña(vp,true);
+					if(ventana2.getConfirm()==true){
+					    ventana2.setVisible(true);   
+					}
+					   						
+					if(raiz3(num1)%1 != 0 ) {
+						resultado = raiz3(num1);
+						resultadoInt = (int) resultado;
+						resultadoFinal = String.valueOf(resultado);
+						vp.getResultado().setText(resultadoFinal); 
+						
+					}else if(raiz3(num1)%1 == 0) {	
+						resultado = raiz3(num1);
+						resultadoInt = (int) resultado;
+						resultadoFinal = String.valueOf(resultadoInt);
+						vp.getResultado().setText(resultadoFinal); 
+						
+					}
 				}
-		
 			
 			}else if(e.getSource() == vp.getRaiz2()) {
 				
