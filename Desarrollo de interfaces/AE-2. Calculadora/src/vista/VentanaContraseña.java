@@ -1,26 +1,14 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.TitledBorder;
-
-import controlador.ManejadorEventos;
-
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.UIManager;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
 import java.awt.Font;
-
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -49,12 +37,13 @@ public class VentanaContraseña extends JDialog {
 	 */
 	public VentanaContraseña(VentanaPrincipal ventanaPrinvipal, boolean permiso) {
 		super(ventanaPrinvipal,permiso);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\user\\Downloads\\lock-alert(3).png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("Imagenes/lock-alert(3).png"));
 		setBackground(new Color(15, 176, 152));
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setSize( 482, 192);
 		setLocationRelativeTo(null);
 		setTitle("No access");		
-		inicializarComponentes();		
+		inicializarComponentes();
 	}
 
 	private void inicializarComponentes() {
@@ -76,7 +65,7 @@ public class VentanaContraseña extends JDialog {
 		etiqContrErroñea.setBounds(157, 74, 181, 28);
 		cajaContenedora2.add(etiqContrErroñea);
 		
-		etiquetaContraseña = new JLabel("Contrase\u00F1a");
+		etiquetaContraseña = new JLabel("Contraseña");
 		etiquetaContraseña.setIcon(null);
 		etiquetaContraseña.setForeground(new Color(255, 255, 255));
 		etiquetaContraseña.setFont(new Font("Century", Font.BOLD, 18));
@@ -112,11 +101,11 @@ public class VentanaContraseña extends JDialog {
 	    botonCancel = new JButton("Cancel");
 		botonCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				confirm = false;
 				dispose();
-				
 			}
 		});
+		
 		botonCancel.setBackground(new Color(233, 233, 233));
 		botonCancel.setBounds(348, 106, 89, 23);		
 		cajaContenedora2.add(botonCancel);

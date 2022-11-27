@@ -128,7 +128,7 @@ public class ManejadorEventos implements ActionListener{
 					    ventana2.setVisible(true);   
 					}
 					   						
-					if(raiz3(num1)%1 != 0 ) {
+				     if(raiz3(num1)%1 != 0 ) {
 						resultado = raiz3(num1);
 						resultadoInt = (int) resultado;
 						resultadoFinal = String.valueOf(resultado);
