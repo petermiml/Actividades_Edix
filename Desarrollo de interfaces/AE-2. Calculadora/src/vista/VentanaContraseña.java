@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+
+import controlador.ManejadorEventos;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.UIManager;
@@ -28,33 +31,32 @@ public class VentanaContraseña extends JDialog {
 	private final JPanel cajaContenedora2 = new JPanel();
 	private JTextField cajaDeTexto;
 	private JButton botonOK, botonCancel;
-	private JLabel etiquetaContraseña, etiquetaImagen;
-	private boolean confirm;
+	private JLabel etiquetaContraseña, etiquetaImagen,etiqContrErroñea;
+	private boolean confirm=true;
+	String contraseña = "1234";	
 	
 	
-	
-	
+	public String getContraseña() {
+		return contraseña;
+	}
 
-
+	public boolean getConfirm() {
+	return confirm;
+	}
 
 	/**
 	 * Create the dialog.
 	 */
-	public VentanaContraseña() {
-		
+	public VentanaContraseña(VentanaPrincipal ventanaPrinvipal, boolean permiso) {
+		super(ventanaPrinvipal,permiso);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\user\\Downloads\\lock-alert(3).png"));
 		setBackground(new Color(15, 176, 152));
 		setSize( 482, 192);
 		setLocationRelativeTo(null);
 		setTitle("No access");		
 		inicializarComponentes();		
-		
-		
-		
 	}
-	
-	
-	
+
 	private void inicializarComponentes() {
 		
 		
@@ -67,13 +69,19 @@ public class VentanaContraseña extends JDialog {
 		
 		
 		
+		etiqContrErroñea = new JLabel("");
+		etiqContrErroñea.setIcon(null);
+		etiqContrErroñea.setForeground(new Color(255, 255, 255));
+		etiqContrErroñea.setFont(new Font("Century", Font.BOLD, 14));
+		etiqContrErroñea.setBounds(157, 74, 181, 28);
+		cajaContenedora2.add(etiqContrErroñea);
+		
 		etiquetaContraseña = new JLabel("Contrase\u00F1a");
 		etiquetaContraseña.setIcon(null);
 		etiquetaContraseña.setForeground(new Color(255, 255, 255));
 		etiquetaContraseña.setFont(new Font("Century", Font.BOLD, 18));
 		etiquetaContraseña.setBounds(45, 38, 102, 42);
 		cajaContenedora2.add(etiquetaContraseña);
-		
 		
 		etiquetaImagen = new JLabel("");
 		etiquetaImagen.setIcon(new ImageIcon("C:\\Users\\user\\Downloads\\key.png"));
@@ -88,22 +96,14 @@ public class VentanaContraseña extends JDialog {
 		botonOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String contraseña = "1234";	
-				
 				if(getCajaDeTexto().equals(contraseña)) {
-					
-					confirm = true;
+			
+					confirm = false;
 					
 					dispose();
-					
-					
-				}	
-			
-				
-				
-			}
-
-			
+				}else {	
+					etiqContrErroñea.setText("'Contraseña inválida'");	
+			}}
 		});
 		botonOK.setBounds(239, 106, 89, 23);
 		cajaContenedora2.add(botonOK);
@@ -126,37 +126,10 @@ public class VentanaContraseña extends JDialog {
 		cajaDeTexto.setBounds(157, 48, 181, 28);
 		cajaDeTexto.setColumns(10);
 		cajaContenedora2.add(cajaDeTexto);
-		
-		
-		
 	}
-
-
 
 	public String getCajaDeTexto() {
 		
 		return cajaDeTexto.getText();
-		
 	}
-
-	public boolean getConfirm() {
-	
-	return confirm;
-	
-	
-	}
-
-	
-
-
-
-	
-
-
-
-	
-	
-	
-	
-	
 }
