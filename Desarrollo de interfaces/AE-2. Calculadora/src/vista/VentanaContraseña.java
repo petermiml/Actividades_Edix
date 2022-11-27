@@ -101,7 +101,7 @@ public class VentanaContraseña extends JDialog {
 	    botonCancel = new JButton("Cancel");
 		botonCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				confirm = false;
+				
 				dispose();
 			}
 		});
