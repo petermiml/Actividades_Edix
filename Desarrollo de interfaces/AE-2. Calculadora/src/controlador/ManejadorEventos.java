@@ -12,14 +12,12 @@ public class ManejadorEventos implements ActionListener{
 
 	
 	private VentanaPrincipal vp;
-	private VentanaContraseña vc;
+	double num1,num2,resultado;
+	int resultadoInt;
+	String resultadoFinal;
 	
 	public ManejadorEventos(VentanaPrincipal vp) {
 		this.vp = vp;
-	}
-	
-	public ManejadorEventos(VentanaContraseña vc) {
-		this.vc = vc;
 	}
 	
 	public double suma(double num1, double num2) {
@@ -40,8 +38,7 @@ public class ManejadorEventos implements ActionListener{
 	
 	public double raiz3(double num1) {
 		
-		return Math.cbrt(num1);
-		
+		return Math.cbrt(num1);	
 	}
 	
 	
@@ -49,19 +46,15 @@ public class ManejadorEventos implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			double num1 = Double.valueOf(vp.getNum1().getText());
-			double num2 = Double.valueOf(vp.getNum2().getText());
-			
-			
-			
-			
-			
+
 			if(e.getSource() == vp.getSumar()) {
+				num1 = Double.valueOf(vp.getNum1().getText());
+				num2 = Double.valueOf(vp.getNum2().getText());
 				// Realizamos la operación.
 				double resultado = suma(num1,num2);							
 				// Si el resultado obtenido entre 1 da como resto 0, hacemos un cast e imprimimos el número como un entero, si no, como decimal.
 				if(resultado%1 == 0) {										
-					int resultadoInt = (int) resultado;
+					resultadoInt = (int) resultado;
 					String resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
@@ -73,85 +66,82 @@ public class ManejadorEventos implements ActionListener{
 			//	esto es lo que nos recomendaste.
 			
 			
-			
-			
 			}else if(e.getSource() == vp.getRestar()){
-				double resultado = resta(num1,num2);
+				num1 = Double.valueOf(vp.getNum1().getText());
+				num2 = Double.valueOf(vp.getNum2().getText());
+				resultado = resta(num1,num2);
 				if(resultado%1 == 0) {										
-					int resultadoInt = (int) resultado;
-					String resultadoFinal = String.valueOf(resultadoInt);
+					resultadoInt = (int) resultado;
+					resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
-					String resultadoFinal = String.valueOf(Math.round(resta(num1,num2)*100d)/100d);	
+					resultadoFinal = String.valueOf(Math.round(resta(num1,num2)*100d)/100d);	
 					vp.getResultado().setText(resultadoFinal);
-					
 				}
 				
-			
-			
-			
-			
 			
 			}else if(e.getSource() == vp.getMultiplicar()) {
-				double resultado = multiplicacion(num1,num2);							
+				num1 = Double.valueOf(vp.getNum1().getText());
+				num2 = Double.valueOf(vp.getNum2().getText());
+				resultado = multiplicacion(num1,num2);							
 
 				if(resultado%1 == 0) {										
-					int resultadoInt = (int) resultado;
-					String resultadoFinal = String.valueOf(resultadoInt);
+					resultadoInt = (int) resultado;
+					resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
-					String resultadoFinal = String.valueOf(multiplicacion(num1,num2));
+					resultadoFinal = String.valueOf(multiplicacion(num1,num2));
 					vp.getResultado().setText(resultadoFinal);
 				}
 				
-			
-			
-			
 			
 			
 			}else if(e.getSource() == vp.getDividir()) {
-				double resultado = division(num1,num2);							
+				num1 = Double.valueOf(vp.getNum1().getText());
+				num2 = Double.valueOf(vp.getNum2().getText());
+				resultado = division(num1,num2);							
 				
 				if(num2 == 0) {
 					vp.getResultado().setText("No se puede dividir\n entre 0");
 				}else if(resultado%1 == 0) {										
-					int resultadoInt = (int) resultado;
-					String resultadoFinal = String.valueOf(resultadoInt);
+					resultadoInt = (int) resultado;
+					resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal);
 				}else {
-					String resultadoFinal = String.valueOf(Math.round(division(num1,num2)*100d)/100d);	
+					resultadoFinal = String.valueOf(Math.round(division(num1,num2)*100d)/100d);	
 					vp.getResultado().setText(resultadoFinal);
 				}
 			
 			
 			
-			
-			
-			
-			}else if(e.getSource() == vp.getRaiz3()) {		
+			}else if(e.getSource() == vp.getRaiz3()) {
 				
-				VentanaContraseña ventana2 = new VentanaContraseña();
-				ventana2.setVisible(true);
-				if(ventana2.getConfirm()) {
+				num1 = Double.valueOf(vp.getNum1().getText());
 				
-				double resultado = raiz3(num1);								
-				if(num1 != 0 && num2 == 0) {
-					int resultadoInt = (int) resultado;
-					String resultadoFinal = String.valueOf(resultadoInt);
+				VentanaContraseña ventana2 = new VentanaContraseña(vp,true);
+				if(ventana2.getConfirm()==true){
+				    ventana2.setVisible(true);   
+				}
+				   						
+				if(num1 != 0 ) {
+					resultado = raiz3(num1);
+					resultadoInt = (int) resultado;
+					resultadoFinal = String.valueOf(resultadoInt);
 					vp.getResultado().setText(resultadoFinal); 
 					
 				}else if(resultado%1 == 0) {										
-					
 					JOptionPane.showMessageDialog(null,"No es posible calcular la raiz cúbica de dos números", "Error", JOptionPane.INFORMATION_MESSAGE);
-				}}
-				
+				}
+		
 			
 			}else if(e.getSource() == vp.getRaiz2()) {
+				
 				JOptionPane.showMessageDialog(null,"Funcionalidad no disponible", "Error", JOptionPane.INFORMATION_MESSAGE);	
 		}
+			
 		//Aquí recogemos la excepción de si el usuario introduce caracteres  que no sean números incluido campo vacío.
 		}catch(NumberFormatException e1){	
-			JOptionPane.showMessageDialog(null,"                      Dato introducido no válido o el campo está vacío.\n\nPara introducir decimales, recuerda utilizar el punto (.) en lugar de la coma (,).", "Error", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"Dato introducido no válido o el campo está vacío.\n\nPara introducir decimales, recuerda utilizar el punto (.) en lugar de la coma (,).", "Error", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
