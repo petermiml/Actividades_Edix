@@ -21,12 +21,12 @@ public class MainReq_1 {
 		byte[] byteFraseCifrada = null;
 		String opc = "";
 		
-		// ================ Creamos la clave simétrica ======================
+		// ================ Creamos la clave simï¿½trica ======================
 		try {
-			// Creamos el objeto que genera la clave simétrica e indicamos que usará el algoritmo DES
+			// Creamos el objeto que genera la clave simï¿½trica e indicamos que usarï¿½ el algoritmo DES
 			generador = KeyGenerator.getInstance("DES");
 			
-			// Creamos la clave simétrica y la almacenamos en "claveSimetrica" que es un objeto de tipo SecretKey
+			// Creamos la clave simï¿½trica y la almacenamos en "claveSimetrica" que es un objeto de tipo SecretKey
 			claveSimetrica = generador.generateKey();
 			
 		}catch(NoSuchAlgorithmException e) {
@@ -37,7 +37,7 @@ public class MainReq_1 {
 		
 		do {
 			System.out.println("======================== Bienvenido al encriptador/desencriptador de frases ========================\n");
-			System.out.println("Indica qué deseas hacer:\n");
+			System.out.println("Indica quï¿½ deseas hacer:\n");
 			System.out.println("	0. Salir del programa.");
 			System.out.println("	1. Encriptar frase.");
 			System.out.println("	2. Desencriptar frase.");
@@ -53,7 +53,7 @@ public class MainReq_1 {
 				case "1":
 					
 					// Pedimos al usuario la frase.
-					System.out.print("Indica a continuación la frase que deseas encriptar: \n\n>> ");
+					System.out.print("Indica a continuaciï¿½n la frase que deseas encriptar: \n\n>> ");
 					frase = lector.nextLine();
 					System.out.println("");
 					
@@ -62,11 +62,11 @@ public class MainReq_1 {
 					
 					// Lo pasamos a String para poder mostrarlo por pantalla.
 					fraseCifrada = new String(byteFraseCifrada);
-					System.out.println("La frase introducida se ha encriptado correctamente.\n\nLa frase encriptada quedaría así: \n    " + fraseCifrada + "\n\n");
+					System.out.println("La frase introducida se ha encriptado correctamente.\n\nLa frase encriptada quedarï¿½a asï¿½: \n    " + fraseCifrada + "\n\n");
 					break;
 					
 				case "2":
-					// Si el usuario pulsa el 2 y aún no se ha encriptado nada se le indicará al usuario que no hay ninguna frase almacenada en memoria.
+					// Si el usuario pulsa el 2 y aï¿½n no se ha encriptado nada se le indicarï¿½ al usuario que no hay ninguna frase almacenada en memoria.
 					if(fraseCifrada.equals("")) {
 						System.out.println("No hay ninguna frase almacenada en memoria.");
 					}else {
@@ -81,7 +81,7 @@ public class MainReq_1 {
 					break;	
 					
 				default:
-					System.out.println("Por favor, elige una opción válida.");
+					System.out.println("Por favor, elige una opciï¿½n vï¿½lida.");
 					break;
 			}
 			
