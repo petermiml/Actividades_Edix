@@ -1,4 +1,4 @@
-package requerimiento1;
+package CriptografiaHashing;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
