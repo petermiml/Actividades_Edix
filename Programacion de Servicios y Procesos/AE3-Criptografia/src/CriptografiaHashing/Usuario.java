@@ -1,5 +1,5 @@
 package CriptografiaHashing;
-//Creamos una clase Usuario para poder crea instanciar objetos en la aplicación 
+//Creamos una clase Usuario para poder crea e instanciar objetos en la aplicación 
 public class Usuario {
 	
 	private String nombreUser, contraseña;

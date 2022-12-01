@@ -9,7 +9,6 @@ import java.util.Scanner;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
-
 public class Aplicacion {
 
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException{
@@ -25,8 +24,8 @@ public class Aplicacion {
 		String nombreUsuario = "";
 		String contraUsuario = "";
 		String mensaje4 ="";
-		int intentos = -1;
-		int intentCont = -1;
+		int intentos = 0;
+		int intentCont = 0;
 		int numeroIntentos=3;
 		int numIntentCont=3;
 				
@@ -77,7 +76,7 @@ public class Aplicacion {
 		do {
 		    System.out.println("Introduce el usuario: ");	
 			nombreUsuario = sc.nextLine();
-			//intentos++;
+			intentos++;
 
 				
 			if(nombreUsuario.equals(usuario1.getNombreUser())||
@@ -137,11 +136,11 @@ public class Aplicacion {
 							    break;
 							case "0":
 								System.out.println("Saliendo del programa...");
-								sc.close();
+								//sc.close();
 								break;	
 									
 								default:
-								System.out.println("Por favor, elige una opci�n v�lida.");
+								System.out.println("Por favor, elige una opcion valida.");
 								break;
 							}
 						}while(!opc.equals("0"));
@@ -151,12 +150,12 @@ public class Aplicacion {
 					System.out.println("Te quedan" + " " + --numIntentCont + " " + "intentos disponibles\n");
 					intentCont++;
 				}
-				}while(intentCont<3);
+				}while(intentCont!=3);
 			} else {
 				System.out.println("Nombre de usuario incorrecto\n");
 				System.out.println("Te quedan" + " " + --numeroIntentos + " " + "intentos disponibles\n");	
 			}			
-	      }while(intentos<3 || intentCont<3 ||!opc.equals("0"));
+	      }while(intentos!=3);
 			
 			sc.close();
 			System.out.println("Fin de sesión");
