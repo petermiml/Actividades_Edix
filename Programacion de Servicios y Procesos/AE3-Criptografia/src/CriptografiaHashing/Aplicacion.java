@@ -93,7 +93,7 @@ public class Aplicacion {
 				md4.update(contUsHash);
 				byte[] resumen4 = md4.digest();
 				mensaje4 = new String(resumen4);
-				System.out.println(mensaje4);
+	
 				//Si todo esto es correcto, sacamos el menú creado para el requerimiento 1.
 				if( mensaje4.equals(usuario1.getContraseña())||
 					mensaje4.equals(usuario2.getContraseña())||
