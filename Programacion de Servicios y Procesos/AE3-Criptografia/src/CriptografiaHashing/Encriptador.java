@@ -1,4 +1,4 @@
-package requerimiento1;
+package CriptografiaHashing;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -10,14 +10,14 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
 /* 
- 	He creado esta clase por tener el código más organizado. Esta clase tiene dos métodos estáticos (no es necesario instanciarla
- 	para utilizarlos) cuya función es encriptar y desencriptar la frase que se le pase por parámetro (junto con una clave simétrica).
+ 	He creado esta clase por tener el cï¿½digo mï¿½s organizado. Esta clase tiene dos mï¿½todos estï¿½ticos (no es necesario instanciarla
+ 	para utilizarlos) cuya funciï¿½n es encriptar y desencriptar la frase que se le pase por parï¿½metro (junto con una clave simï¿½trica).
  
  */
 
 public class Encriptador {
 	
-	// Método para encriptar una frase. Recibirá una frase como String y una clave simétrica por parámetros y devolverá
+	// Mï¿½todo para encriptar una frase. Recibirï¿½ una frase como String y una clave simï¿½trica por parï¿½metros y devolverï¿½
 	// la misma frase pasada a bytes y encriptada.
 	public static byte[] encriptarFrase(String frase, SecretKey claveSimetrica) {
 		
@@ -29,7 +29,7 @@ public class Encriptador {
 			// Creamos el objeto cifrador indicando que usaremos el algoritmo DES
 			Cipher cifrador = Cipher.getInstance("DES");
 			
-			// Inicializamos y configuramos el cifrador en modo encriptación y le pasamos la clave simétrica que nos llega por parámetro
+			// Inicializamos y configuramos el cifrador en modo encriptaciï¿½n y le pasamos la clave simï¿½trica que nos llega por parï¿½metro
 			cifrador.init(Cipher.ENCRYPT_MODE,  claveSimetrica);
 			
 			
@@ -48,24 +48,24 @@ public class Encriptador {
 			System.out.println("Error al cifrar el mensaje");
 		}
 		
-		// El método devolverá el mensaje cifrado convertido a bytes[]
+		// El mï¿½todo devolverï¿½ el mensaje cifrado convertido a bytes[]
 		return byteMensajeCifrado;
 	}
 	
-	// Método para desencriptar una frase. Recibirá una frase encriptada como bytes[] y una clave simétrica por parámetros y devolverá
+	// Mï¿½todo para desencriptar una frase. Recibirï¿½ una frase encriptada como bytes[] y una clave simï¿½trica por parï¿½metros y devolverï¿½
 	// la misma frase pasada a bytes y encriptada.
 	public static String desencriptarFrase(byte[] byteFrase, SecretKey claveSimetrica) {
 		String fraseDescifrada = "";
 		
 		try {
 			
-			// Creamos el objeto cifrador indicando que usaremos el algoritmo DES		
+			// Creamos el objeto descifrador indicando que usaremos el algoritmo DES		
 			Cipher descifrador = Cipher.getInstance("DES");
 			
-			// Inicializamos y configuramos el cifrador en modo desencriptación y le pasamos la clave simétrica que nos llega por parámetro
+			// Inicializamos y configuramos el descifrador en modo desencriptaciï¿½n y le pasamos la clave simï¿½trica que nos llega por parï¿½metro
 			descifrador.init(Cipher.DECRYPT_MODE,  claveSimetrica);
 			
-			// Desciframos la frase en bytes que nos llega por parámetro y lo alamacenamos en byteFraseDescifrada
+			// Desciframos la frase en bytes que nos llega por parï¿½metro y lo alamacenamos en byteFraseDescifrada
 			byte[] byteFraseDescifrada = descifrador.doFinal(byteFrase);
 			
 			// Lo convertimos a String
@@ -79,7 +79,7 @@ public class Encriptador {
 			System.out.println("Error al cifrar el mensaje");
 				}
 		
-		// El método devolverá la String de la frase desencriptada.
+		// El mï¿½todo devolverï¿½ la String de la frase desencriptada.
 		return fraseDescifrada;
 	}
 
