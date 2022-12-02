@@ -112,7 +112,7 @@ public class Aplicacion {
 						switch (opc) {
 							case "1":
 							// Pedimos al usuario la frase.
-							    System.out.print("Indica a continuaci�n la frase que deseas encriptar: \n\n>> ");
+							    System.out.print("Indica a continuacion la frase que deseas encriptar: \n\n>> ");
 							    frase = sc.nextLine();
 								System.out.println("");
 									
@@ -121,11 +121,11 @@ public class Aplicacion {
 									
 								// Lo pasamos a String para poder mostrarlo por pantalla.
 								fraseCifrada = new String(byteFraseCifrada);
-								System.out.println("La frase introducida se ha encriptado correctamente.\n\nLa frase encriptada quedar�a as�: \n    " + fraseCifrada + "\n\n");
+								System.out.println("La frase introducida se ha encriptado correctamente.\n\nLa frase encriptada quedara asi: \n    " + fraseCifrada + "\n\n");
 								break;
 								
 							case "2":
-								// Si el usuario pulsa el 2 y a�n no se ha encriptado nada se le indicar� al usuario que no hay ninguna frase almacenada en memoria.
+								// Si el usuario pulsa el 2 y a�n no se ha encriptado nada se le indicara al usuario que no hay ninguna frase almacenada en memoria.
 								if(fraseCifrada.equals("")) {
 								    System.out.println("No hay ninguna frase almacenada en memoria.");
 									}else {
